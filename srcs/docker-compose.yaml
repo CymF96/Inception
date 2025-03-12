@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: nginx
     env_file:
-      - srcs/.secrets/.env
+      - .secrets/.env
     ports:
       - 443:443
     volumes:
@@ -28,7 +28,7 @@ services:
     volumes:
       - /home/cofische/data/mariadb:/var/lib/mysql
     env_file:
-      - srcs/.secrets/.env
+      - .secrets/.env
     networks:
       - backend
     expose:
@@ -42,7 +42,7 @@ services:
     volumes:
       - /home/cofische/data/wordpress:/var/www/cofische
     env_file:
-      - srcs/.secrets/.env
+      - .secrets/.env
     networks:
       - frontend
       - backend
