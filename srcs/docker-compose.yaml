@@ -1,0 +1,72 @@
+services:
+  nginx:
+    build:
+      context: requirements/nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    ports:
+      - 443:443
+    volumes:
+      - /home/cofische/data/wordpress:/var/www/cofische
+    networks:
+      - frontend
+    expose:
+      - 9000
+    secrets:
+      - ssl_certificate
+      - ssl_certificate_key
+    depends_on:
+      - wordpress
+  
+  mariadb:
+    build:
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    container_name: mariadb
+    volumes:
+      - /home/cofische/data/mariadb:/var/lib/mysql
+    environment:
+      - DB_HOST=$DB_HOST
+      - DB_ADMIN_ID=$DB_ADMIN_ID
+      - DB_ID=$DB_ID
+      - DATABASE=$DATABASE_NAME
+      - DOMAINE_NAME=$DOMAINE_NAME
+    networks:
+      - backend
+    expose:
+      - 3306
+  
+  wordpress:
+    build:
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    container_name: wordpress
+    volumes:
+      - /home/cofische/data/wordpress:/var/www/cofische
+    environment:
+      - DB_HOST=$DB_HOST
+      - DB_ADMIN_ID=$DB_ADMIN_ID
+      - DB_ID=$DB_ID
+      - WP_ADMIN_ID=$WP_ADMIN_ID
+      - DATABASE=$DATABASE_NAME
+      - DOMAINE_NAME=$DOMAINE_NAME
+    networks:
+      - frontend
+      - backend
+    expose:
+      - 9000
+      - 3306
+    depends_on:
+      - mariadb
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+secrets:
+  ssl_certificate:
+    file: /etc/nginx/ssl/self.crt
+  ssl_certificate_key:
+    file: /etc/nginx/ssl/self.key
