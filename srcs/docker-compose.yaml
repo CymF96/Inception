@@ -33,8 +33,6 @@ services:
       - backend
     expose:
       - 3306
-    secrets:
-      - env_secret
   
   wordpress:
     build:
@@ -51,8 +49,6 @@ services:
     expose:
       - 9000
       - 3306
-    secrets:
-      - env_secret
     depends_on:
       - mariadb
 
