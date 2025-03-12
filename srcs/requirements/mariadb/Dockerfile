@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-RUN	sudo apt update && apt install mariadb-server -y
+RUN	apt update && apt install mariadb-server -y
 
 COPY init.sql /init.sql
 COPY start_mariadb.sh /start_mariadb.sh
