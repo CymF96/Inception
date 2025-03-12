@@ -1,7 +1,7 @@
 FROM debian:bookworm
 
 RUN	apt update && apt install -y \
-bash\
+bash \
 mariadb-server
 
 COPY init.sql /init.sql
