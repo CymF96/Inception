@@ -1,6 +1,6 @@
 # Variables
 COMPOSE = docker compose -f requirements/docker-compose.yaml
-PROJECT_NAME = Inception
+PROJECT_NAME = inception
 
 # Default target: Run everything
 all: up
