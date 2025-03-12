@@ -1,4 +1,4 @@
-FROM Debian:bookworm
+FROM debian:bookworm
 
 RUN apt update && apt install -y \
     curl \
@@ -18,8 +18,8 @@ ENV PHP_VERSION=8.2
 ENV DOMAINE=cofische
 
 # Copy environment file
-COPY /.secrets/.env /var/www/.env
-RUN source /var/www/.env
+RUN --mount=type=secret,id=env_secret cat /run/secrets/env_secret > /.env
+RUN source /.env
 
 # Set secrets for Database and wordpress password
 RUN --mount=type=secret,id=db_admin_pwd \

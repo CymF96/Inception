@@ -15,6 +15,7 @@ services:
     secrets:
       - ssl_certificate
       - ssl_certificate_key
+      - env_secret
     depends_on:
       - wordpress
   
@@ -35,6 +36,8 @@ services:
       - backend
     expose:
       - 3306
+    secrets:
+      - env_secret
   
   wordpress:
     build:
@@ -56,6 +59,8 @@ services:
     expose:
       - 9000
       - 3306
+    secrets:
+      - env_secret
     depends_on:
       - mariadb
 
@@ -70,3 +75,5 @@ secrets:
     file: /etc/nginx/ssl/self.crt
   ssl_certificate_key:
     file: /etc/nginx/ssl/self.key
+  env_secret:
+    file: srcs/.secrets/.env
