@@ -4,8 +4,6 @@ RUN apt update && apt install nginx -y
 RUN apt install openssl -y
 
 COPY nginx.conf /etc/nginx/nginx.conf
-RUN --mount=type=secret,id=env_secret cat /run/secrets/env_secret > /.env
-RUN source /.env
 
 ENV DOMAINE=cofische
 

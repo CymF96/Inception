@@ -12,8 +12,6 @@ RUN --mount=type=secret,id=db_admin_pwd \
 export DB_ADMIN_PWD=$(cat /.secrets/db_admin_pwd.txt)
 RUN --mount=type=secret,id=db_pwd \
 export DB_PWD=$(cat /.secrets/db_pwd.txt)
-RUN --mount=type=secret,id=env_secret sh -c 'cat /run/secrets/env_secret > /.env'
-RUN source /.env
 
 RUN mkdir -p /var/lib/mysql
 VOLUME ["/var/lib/mysql"]

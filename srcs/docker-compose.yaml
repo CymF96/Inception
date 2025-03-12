@@ -4,6 +4,8 @@ services:
       context: requirements/nginx
       dockerfile: Dockerfile
     container_name: nginx
+    env_file:
+      - srcs/.secrets/.env
     ports:
       - 443:443
     volumes:
@@ -15,7 +17,6 @@ services:
     secrets:
       - ssl_certificate
       - ssl_certificate_key
-      - env_secret
     depends_on:
       - wordpress
   
@@ -26,12 +27,8 @@ services:
     container_name: mariadb
     volumes:
       - /home/cofische/data/mariadb:/var/lib/mysql
-    environment:
-      - DB_HOST=$DB_HOST
-      - DB_ADMIN_ID=$DB_ADMIN_ID
-      - DB_ID=$DB_ID
-      - DATABASE=$DATABASE_NAME
-      - DOMAINE_NAME=$DOMAINE_NAME
+    env_file:
+      - srcs/.secrets/.env
     networks:
       - backend
     expose:
@@ -46,13 +43,8 @@ services:
     container_name: wordpress
     volumes:
       - /home/cofische/data/wordpress:/var/www/cofische
-    environment:
-      - DB_HOST=$DB_HOST
-      - DB_ADMIN_ID=$DB_ADMIN_ID
-      - DB_ID=$DB_ID
-      - WP_ADMIN_ID=$WP_ADMIN_ID
-      - DATABASE=$DATABASE_NAME
-      - DOMAINE_NAME=$DOMAINE_NAME
+    env_file:
+      - srcs/.secrets/.env
     networks:
       - frontend
       - backend
@@ -75,5 +67,3 @@ secrets:
     file: /etc/nginx/ssl/self.crt
   ssl_certificate_key:
     file: /etc/nginx/ssl/self.key
-  env_secret:
-    file: srcs/.secrets/.env
