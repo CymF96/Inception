@@ -1,5 +1,5 @@
 # Variables
-COMPOSE = docker-compose -f requirements/docker-compose.yaml
+COMPOSE = docker compose -f requirements/docker-compose.yaml
 PROJECT_NAME = Inception
 
 # Default target: Run everything
