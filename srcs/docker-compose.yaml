@@ -14,9 +14,9 @@ services:
       - frontend
     expose:
       - 9000
-    secrets:
-      - ssl_certificate
-      - ssl_certificate_key
+    #secrets:
+    #  - ssl_certificate
+    #  - ssl_certificate_key
     depends_on:
       - wordpress
   
@@ -58,8 +58,8 @@ networks:
   backend:
     driver: bridge
 
-secrets:
-  ssl_certificate:
-    file: /etc/nginx/ssl/self.crt
-  ssl_certificate_key:
-    file: /etc/nginx/ssl/self.key
+#secrets:
+#  ssl_certificate:
+#    file: /etc/nginx/ssl/self.crt
+#  ssl_certificate_key:
+#    file: /etc/nginx/ssl/self.key
