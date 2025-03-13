@@ -2,7 +2,7 @@ FROM debian:bookworm
 
 RUN apt update && apt install nginx -y
 RUN apt install openssl -y
-RUN mkdir /etc/nginx /etc/nginx/ssl/certs etc/nginx/ssl/private
+RUN mkdir /etc/nginx/ssl/certs /etc/nginx/ssl/private
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
