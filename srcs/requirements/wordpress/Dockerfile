@@ -14,9 +14,6 @@ RUN apt update && apt install -y \
     php-zip \
     && rm -rf /var/lib/apt/lists/*
 
-ENV PHP_VERSION=8.2
-ENV DOMAINE=cofische
-
 # Set secrets for Database and wordpress password
 RUN --mount=type=secret,id=db_admin_pwd \
     export DB_ADMIN_PWD=$(cat /.secrets/.db_admin_pwd.txt)
@@ -44,22 +41,22 @@ RUN --mount=type=secret,id=nonce_salt \
     export NONCE_SALT=$(head -n 8 /.secrets/.wp-key)
 
 # Define volume for WordPress files
-VOLUME ["/var/www/$DOMAINE"]
+VOLUME ["/var/www/cofische"]
 
 # Copy configuration files
-COPY wp-config.php /var/www/$DOMAINE/wp-config.php
+COPY wp-config.php /var/www/cofische/wp-config.php
 COPY www.conf /etc/php/$PHP_VERSION/pool.d/www.conf
-COPY setup_wp.sh /var/www/$DOMAINE/setup_wp.sh
+COPY setup_wp.sh /var/www/cofische/setup_wp.sh
 
 # Install WordPress and set permissions
 RUN cd /tmp \
     && curl -LO https://wordpress.org/latest.tar.gz \
     && tar xzvf latest.tar.gz \
     && cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php \
-    && cp -a /tmp/wordpress/. /var/www/$DOMAINE \
-    && mv /var/www/$DOMAINE/wp-config.php /var/www/$DOMAINE/wp-config-backup.php \
-    && chown -R www-data:www-data /var/www/$DOMAINE
+    && cp -a /tmp/wordpress/. /var/www/cofische \
+    && mv /var/www/cofische/wp-config.php /var/www/cofische/wp-config-backup.php \
+    && chown -R www-data:www-data /var/www/cofische
 
 EXPOSE 9000
 
-CMD ["cd /var/www/$DOMAINE", "./setup_wp.sh", "rm -f /var/www/$DOMAINE/setup_wp.sh"]
+CMD ["php-fpm8.2", "cd /var/www/cofische", "./setup_wp.sh", "rm -f /var/www/cofische/setup_wp.sh"]
