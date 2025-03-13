@@ -62,4 +62,4 @@ RUN cd /tmp \
 
 EXPOSE 9000
 
-CMD ["php-fpm$PHP_VERSION", "cd /var/www/$DOMAINE", "./setup_wp.sh", "rm -f /var/www/$DOMAINE/setup_wp.sh"]
+CMD ["cd /var/www/$DOMAINE", "./setup_wp.sh", "rm -f /var/www/$DOMAINE/setup_wp.sh"]
