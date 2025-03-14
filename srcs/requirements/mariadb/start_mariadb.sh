@@ -11,4 +11,6 @@ fi
 service mariadb start
 sleep 20
 export $(printenv | cut -d= -f1)
+echo $DB_ADMIN_ID
+echo $DATABASE
 envsubst < init.sql | mariadb
