@@ -20,4 +20,4 @@ VOLUME ["/var/lib/mysql"]
 
 EXPOSE 3306
 
-CMD ["service", "mariadb", "start"]
+ENTRYPOINT ["service", "mariadb", "start"]
