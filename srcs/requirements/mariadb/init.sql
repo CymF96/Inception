@@ -15,4 +15,4 @@ INSERT INTO Visited_countries (country, nb_visits, last_visited) VALUES ('France
 
 -- exit mariadb
 FLUSH PRIVILEGES;
-EXIT;
+EXIT
