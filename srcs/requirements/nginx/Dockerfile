@@ -1,6 +1,7 @@
 FROM debian:bookworm
 
 RUN apt update && apt install nginx -y
+RUN apt install vim -y
 RUN apt install openssl -y
 RUN mkdir /etc/nginx/ssl /etc/nginx/ssl/certs /etc/nginx/ssl/private
 
