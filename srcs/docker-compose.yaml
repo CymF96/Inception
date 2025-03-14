@@ -56,7 +56,7 @@ networks:
     driver: bridge
 
 env_file:
-  path: .secrets/.env
+  path: ./.env
   required: true
 
 #secrets:
