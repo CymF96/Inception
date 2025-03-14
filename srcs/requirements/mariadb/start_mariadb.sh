@@ -10,4 +10,5 @@ fi
 
 service mariadb start
 sleep 20
-mariadb < /init.sql
+export $(grep -v '^#' .env | xargs)
+envsubst < init.sql | mariadb
