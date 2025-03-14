@@ -14,7 +14,6 @@ export DB_ADMIN_PWD=$(cat /.secrets/db_admin_pwd.txt)
 RUN --mount=type=secret,id=db_pwd \
 export DB_PWD=$(cat /.secrets/db_pwd.txt)
 
-RUN mkdir -p /var/lib/mysql
 VOLUME ["/var/lib/mysql"]
 
 EXPOSE 3306
