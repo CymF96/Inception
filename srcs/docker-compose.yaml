@@ -27,6 +27,8 @@ services:
     container_name: mariadb
     volumes:
       - /home/cofische/data/mariadb:/var/lib/mysql
+    env_file: 
+      - .env
     networks:
       - backend
     expose:
@@ -37,6 +39,8 @@ services:
       context: requirements/wordpress
       dockerfile: Dockerfile
     container_name: wordpress
+    env_file: 
+      - .env
     volumes:
       - /home/cofische/data/wordpress:/var/www/cofische    
     networks:
