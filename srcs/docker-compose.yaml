@@ -24,11 +24,22 @@ services:
     build:
       context: requirements/mariadb
       dockerfile: Dockerfile
+      args:
+        - DATABASE: ${DATABASE}
+        - DB_ADMIN_ID: ${DB_ADMIN_ID}
+        - DB_ID: ${DB_ID}
+        - DB_HOST: ${DB_HOST}
+        - DOMAINE_NAME: ${DOMAINE_NAME}
+        - VOLUME_LOCATION: ${VOLUME_LOCATION}
+        - SITE_URL: ${SITE_URL}
+        - SITE_TITLE: ${SITE_TITLE}
+        - WP_ADMIN_ID: ${WP_ADMIN_ID}
+        - ADMIN_EMAIL: ${ADMIN_EMAIL}
+        - WP_LOCAL: ${WP_LOCAL}
+    env_file: .env   
     container_name: mariadb
     volumes:
       - /home/cofische/data/mariadb:/var/lib/mysql
-    env_file: 
-      - .env
     networks:
       - backend
     expose:
@@ -39,8 +50,6 @@ services:
       context: requirements/wordpress
       dockerfile: Dockerfile
     container_name: wordpress
-    env_file: 
-      - .env
     volumes:
       - /home/cofische/data/wordpress:/var/www/cofische    
     networks:
