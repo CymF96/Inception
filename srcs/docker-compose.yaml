@@ -36,7 +36,7 @@ services:
         - WP_ADMIN_ID: ${WP_ADMIN_ID}
         - ADMIN_EMAIL: ${ADMIN_EMAIL}
         - WP_LOCAL: ${WP_LOCAL}
-    env_file: .env   
+    #env_file: .env   
     container_name: mariadb
     volumes:
       - /home/cofische/data/mariadb:/var/lib/mysql
