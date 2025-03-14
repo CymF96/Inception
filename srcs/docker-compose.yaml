@@ -29,6 +29,10 @@ services:
       - /home/cofische/data/mariadb:/var/lib/mysql
     env_file: 
       - .secrets/.env
+    environment:
+      - DATABASE=Travel
+      - DB_ADMIN_ID=InceptionMaster
+      - DB_ID=RandomUser
     networks:
       - backend
     expose:
