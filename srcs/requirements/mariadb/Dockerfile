@@ -15,7 +15,6 @@ RUN --mount=type=secret,id=db_pwd \
 export DB_PWD=$(cat /.secrets/db_pwd.txt)
 
 RUN /start_mariadb.sh
-RUN rm -f /start_mariadb.sh /init.sql
 
 VOLUME ["/var/lib/mysql"]
 
