@@ -4,7 +4,7 @@ services:
       context: requirements/nginx
       dockerfile: Dockerfile
     container_name: nginx
-    env_file: ".env"
+    env_files: ".env"
     ports:
       - 443:443
     volumes:
@@ -26,7 +26,7 @@ services:
     container_name: mariadb
     volumes:
       - /home/cofische/data/mariadb:/var/lib/mysql
-    env_file: ".env"
+    env_files: ".env"
     networks:
       - backend
     expose:
@@ -37,7 +37,7 @@ services:
       context: requirements/wordpress
       dockerfile: Dockerfile
     container_name: wordpress
-    env_file: ".env"
+    env_files: ".env"
     volumes:
       - /home/cofische/data/wordpress:/var/www/cofische
     networks:
@@ -55,7 +55,7 @@ networks:
   backend:
     driver: bridge
 
-env_file:
+env_files:
   path: ./.secrets/.env
   required: true
 
