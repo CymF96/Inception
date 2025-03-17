@@ -18,19 +18,17 @@ services:
       - wordpress
   
   mariadb:
-    build:
-      context: requirements/mariadb
-      dockerfile: Dockerfile
-    env_file: .env
-    user: "mysql:mysql" 
+    build: ./requirements/mariadb
+    image: mariadb
     container_name: mariadb
+    env_file: .env
     volumes:
       - mariadb-volume:/var/lib/mysql
     networks:
       - backend
     expose:
       - 3306
-    restart: always
+    restart: on-failure
   
   wordpress:
     build:
@@ -56,7 +54,6 @@ networks:
 
 volumes:
   mariadb-volume:
-    driver: local
     driver_opts:
       type: none
       device: /home/cofische/data/mariadb

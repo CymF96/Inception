@@ -24,7 +24,8 @@ else
 	FLUSH PRIVILEGES;
 	EXIT;
 EOF
-	service mariadb restart
-	
+
 	echo "Database setup completed."
 fi
+
+exec "$@"
