@@ -17,3 +17,4 @@ VOLUME ["/var/lib/mysql"]
 
 ENTRYPOINT ["bash","/usr/local/bin/start_mariadb.sh"]
 
+CMD ["bash", "start_mariadb.sh"]
