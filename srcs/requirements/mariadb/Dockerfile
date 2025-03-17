@@ -20,7 +20,7 @@ RUN	chmod +x /tmp/start_mariadb.sh
 
 EXPOSE 3306
 
-#VOLUME ["/var/lib/mysql"]
+VOLUME ["/var/lib/mysql"]
 
 ENTRYPOINT ["bash","/tmp/start_mariadb.sh"]
 
