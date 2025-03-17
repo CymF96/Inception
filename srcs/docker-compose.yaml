@@ -36,6 +36,9 @@ services:
         - WP_ADMIN_ID=${WP_ADMIN_ID}
         - ADMIN_EMAIL=${ADMIN_EMAIL}
         - WP_LOCAL=${WP_LOCAL}
+    secrets:
+      - db_admin_pwd
+      - db_pwd
     env_file: .env   
     container_name: mariadb
     volumes:
@@ -68,7 +71,11 @@ networks:
   backend:
     driver: bridge
 
-#secrets:
+secrets:
+  db_admin_pwd:
+    file: .secrets/.db_admin_pwd.txt
+  db_pwd:
+    file: .secrets/.db_pwd.txt
 #  ssl_certificate:
 #    file: /etc/nginx/ssl/self.crt
 #  ssl_certificate_key:
