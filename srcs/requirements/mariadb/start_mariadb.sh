@@ -1,15 +1,15 @@
 #!/bin/bash
 
-if [ -f "/run/secrets/db_admin_pwd" ]; then
-	DB_ADMIN_PWD=$(cat /run/secrets/db_admin_pwd)
-fi
-if [ -f "/run/secrets/db_pwd" ]; then
-	DB_PWD=$(cat /run/secrets/db_pwd)
-fi
+#if [ -f "/run/secrets/db_admin_pwd" ]; then
+#	DB_ADMIN_PWD=$(cat /run/secrets/db_admin_pwd)
+#fi
+#if [ -f "/run/secrets/db_pwd" ]; then
+#	DB_PWD=$(cat /run/secrets/db_pwd)
+#fi
 
 echo "DB_ADMIN_ID"$DB_ADMIN_ID
 echo "DATABASE"$DATABASE
-cat /run/secrets/db_pwd
+echo "DB_ADMIN_PWD"$DB_ADMIN_PWD
 echo "DB_PWD"$DB_PWD
 
 service mariadb start
