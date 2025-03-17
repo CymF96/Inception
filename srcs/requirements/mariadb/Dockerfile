@@ -24,8 +24,6 @@ EXPOSE 3306
 
 VOLUME ["/var/lib/mysql"]
 
-RUN start_mariadb.sh
-
 ENTRYPOINT ["start_mariadb.sh"]
 
 USER mysql
