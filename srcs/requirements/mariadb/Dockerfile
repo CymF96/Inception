@@ -6,7 +6,7 @@ RUN	apt update && apt install -y \
 	mariadb-client \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN usermod -u 1001 mysql && groupmod -g 1001 mysql
+#RUN usermod -u 1001 mysql && groupmod -g 1001 mysql
 COPY init.sql /usr/local/bin/
 COPY start_mariadb.sh /usr/local/bin/
 RUN	chmod +x /usr/local/bin/start_mariadb.sh
@@ -16,6 +16,6 @@ EXPOSE 3306
 
 VOLUME ["/var/lib/mysql"]
 
-ENTRYPOINT ["start_mariadb.sh"]
+ENTRYPOINT ["id mysql", "start_mariadb.sh"]
 
 #CMD ["bash", "start_mariadb.sh"]
