@@ -19,6 +19,7 @@ then
 	echo "Database already exists"
 else
 
+mariadb
 #delete test user and database
 echo "DELETE FROM mysql.user WHERE User='';"
 echo "DROP DATABASE IF EXISTS test;"
