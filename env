@@ -1,0 +1,10 @@
+DB_ADMIN_ID=InceptionMaster
+DB_ID=RandomUser
+WP_ADMIN_ID=cofische
+DATABASE=Travel
+DOMAINE_NAME=cofische.42.fr
+DB_HOST=mariadb:3306
+SITE_URL=https://cofische.42.fr
+SITE_TITLE=Inception_Project
+ADMIN_EMAIL=cofische@email.com
+WP_LOCAL=en_UK

@@ -44,6 +44,7 @@ services:
       - backend
     expose:
       - 3306
+    restart: always
   
   wordpress:
     build:
