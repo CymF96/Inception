@@ -1,5 +1,7 @@
 #!/bin/bash
+set -e  # Exit on error
 
+# Load secrets if they exist
 #if [ -f "/run/secrets/db_admin_pwd" ]; then
 #	DB_ADMIN_PWD=$(cat /run/secrets/db_admin_pwd)
 #fi
@@ -7,28 +9,33 @@
 #	DB_PWD=$(cat /run/secrets/db_pwd)
 #fi
 
-echo "DB_ADMIN_ID"$DB_ADMIN_ID
-echo "DATABASE"$DATABASE
-echo "DB_ADMIN_PWD"$DB_ADMIN_PWD
-echo "DB_PWD"$DB_PWD
+# Debugging output
+echo "DB_ADMIN_ID: $DB_ADMIN_ID"
+echo "DATABASE: $DATABASE"
+echo "DB_ADMIN_PWD: [HIDDEN]"
+echo "DB_PWD: [HIDDEN]"
 
+# Start MariaDB service
 service mariadb start
 
-if [ -d "/var/lib/mysql/$DATABASE" ]
-then 
+# Check if database exists
+if [ -d "/var/lib/mysql/$DATABASE" ]; then 
 	echo "Database already exists"
 else
+	echo "Initializing database..."
 
-mariadb
-#delete test user and database
-echo "DELETE FROM mysql.user WHERE User='';"
-echo "DROP DATABASE IF EXISTS test;"
+	# Execute SQL commands
+	mariadb -u root <<EOF
+DELETE FROM mysql.user WHERE User='';
+DROP DATABASE IF EXISTS test;
+CREATE DATABASE IF NOT EXISTS \`$DATABASE\`;
+GRANT ALL ON *.* TO '$DB_ADMIN_ID'@'localhost' IDENTIFIED BY '$DB_ADMIN_PWD' WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE ON *.* TO '$DB_ID'@'localhost' IDENTIFIED BY '$DB_PWD';
+FLUSH PRIVILEGES;
+EOF
 
-#create db root and normal
-echo "GRANT ALL ON *.* TO '$DB_ADMIN_ID'@'localhost' IDENTIFIED BY '$DB_ADMIN_PWD' WITH GRANT OPTION;"
-#UPDATE mysql.user SET Host='localhost' WHERE User='$DB_ADMIN_ID';
-echo "GRANT SELECT, INSERT, UPDATE ON *.* TO '$DB_ID'@'localhost' IDENTIFIED BY '$DB_PWD';"
+	# Execute additional initialization SQL file
+	mariadb -u root "$DATABASE" < /usr/local/bin/init.sql
 
-mariadb < /usr/local/bin/init.sql
-
-fi 
+	echo "Database setup completed."
+fi
