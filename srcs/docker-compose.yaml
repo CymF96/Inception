@@ -42,7 +42,9 @@ services:
     env_file: .env   
     container_name: mariadb
     volumes:
-      - mariadb:/var/lib/mysql
+      - type: bind
+        source: /home/cofische/data/mariadb/
+        target: /var/lib/mysql
     networks:
       - backend
     expose:
@@ -80,11 +82,3 @@ secrets:
 #    file: /etc/nginx/ssl/self.crt
 #  ssl_certificate_key:
 #    file: /etc/nginx/ssl/self.key
-
-volumes:
-  mariadb:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/cofische/data/mariadb
-      o: bind
