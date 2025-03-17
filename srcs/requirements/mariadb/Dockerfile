@@ -28,6 +28,6 @@ export DB_PWD=$(cat /.secrets/db_pwd.txt)
 
 EXPOSE 3306
 
-ENTRYPOINT ["/usr/local/bin/start_mariadb.sh"]
+ENTRYPOINT ["bash","/usr/local/bin/start_mariadb.sh"]
 
-CMD ["mariadb", "--bind-address=0.0.0.0"]
+CMD ["mysqld", "--bind-address=0.0.0.0"]
