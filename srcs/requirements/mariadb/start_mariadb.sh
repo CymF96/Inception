@@ -7,7 +7,7 @@ service mariadb start
 
 # Check if database exists
 if [ -d "/var/lib/mysql/$DATABASE" ]; then 
-	echo "Database already exists, starting service only"
+	echo "Database ($DATABASE) already exists, starting service only"
 else
 	echo "Initializing database..."
 
