@@ -11,6 +11,8 @@ RUN mkdir -p /var/run/mysqld
 
 RUN chown -R mysql:mysql /var/run/mysqld \
 && chmod 777 /var/run/mysqld
+RUN chown -R 999:999 /var/lib/mysql \
+&& chmod 777 /var/lib/mysql
 
 COPY init.sql /usr/local/bin/
 COPY start_mariadb.sh /usr/local/bin
