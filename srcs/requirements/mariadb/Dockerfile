@@ -27,4 +27,4 @@ ENTRYPOINT ["bash","/tmp/start_mariadb.sh"]
 
 #USER mysql
 
-#CMD ["bash", "start_mariadb.sh"]
+CMD ["mysqld_safe"]
