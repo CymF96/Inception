@@ -28,14 +28,14 @@ else
 	mariadb -u root <<EOF
 DELETE FROM mysql.user WHERE User='';
 DROP DATABASE IF EXISTS test;
-CREATE DATABASE IF NOT EXISTS \`$DATABASE\`;
 GRANT ALL ON *.* TO '$DB_ADMIN_ID'@'localhost' IDENTIFIED BY '$DB_ADMIN_PWD' WITH GRANT OPTION;
 GRANT SELECT, INSERT, UPDATE ON *.* TO '$DB_ID'@'localhost' IDENTIFIED BY '$DB_PWD';
 FLUSH PRIVILEGES;
 EOF
 
-	# Execute additional initialization SQL file
-	mariadb -u root "$DATABASE" < /usr/local/bin/init.sql
+# Execute additional initialization SQL file
+mariadb -u root "$DATABASE" < /usr/local/bin/init.sql
 
-	echo "Database setup completed."
+echo "Database setup completed."
+
 fi
