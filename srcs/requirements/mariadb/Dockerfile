@@ -10,7 +10,7 @@ RUN	apt update && apt install -y \
 RUN usermod -u 1001 mysql && groupmod -g 1001 mysql
 
 # Ensure the mysql user and group are present before using them
-RUN groupadd -g 1001 mysql && useradd -u 1001 -g mysql mysql
+#RUN groupadd -g 1001 mysql && useradd -u 1001 -g mysql mysql
 
 COPY init.sql /usr/local/bin/
 COPY start_mariadb.sh /usr/local/bin/
