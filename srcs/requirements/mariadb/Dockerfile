@@ -6,7 +6,7 @@ RUN	apt update && apt install -y \
 	mariadb-client \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g 1001 mysql && useradd -u 1001 -g 1001 mysql
+RUN usermod -u 1001 mysql && groupmod -g 1001 mysql
 COPY init.sql /usr/local/bin/
 COPY start_mariadb.sh /usr/local/bin/
 RUN	chmod +x /usr/local/bin/start_mariadb.sh
