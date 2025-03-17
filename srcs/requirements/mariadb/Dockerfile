@@ -8,7 +8,6 @@ mariadb-client \
 && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/run/mysqld
-VOLUME ["/var/lib/mysqld"]
 
 RUN chown -R mysql:mysql /var/run/mysqld \
 && chmod 777 /var/run/mysqld

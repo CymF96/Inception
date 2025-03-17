@@ -42,7 +42,7 @@ services:
     env_file: .env   
     container_name: mariadb
     volumes:
-      - /home/cofische/data/mariadb:/var/lib/mysql
+      - /home/cofische/data/mariadb:/var/lib/mysqld
     networks:
       - backend
     expose:
