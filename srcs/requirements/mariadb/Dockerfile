@@ -28,4 +28,6 @@ VOLUME ["/var/lib/mysql"]
 
 EXPOSE 3306
 
-#ENTRYPOINT ["printenv"]
+ENTRYPOINT ["/usr/bin/start_mariadb.sh"]
+
+CMD ["mariadb"]
