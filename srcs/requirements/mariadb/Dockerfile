@@ -10,9 +10,9 @@ RUN	apt-get update && apt-get install -y \
 RUN usermod -u 1001 mysql && groupmod -g 1001 mysql
 RUN chown -R mysql:mysql /var/lib/mysql
 
-#RUN mkdir -p /var/run/mysqld \
-#&& chown -R mysql:mysql /var/run/mysqld \
-#&& chmod 777 /var/run/mysqld
+RUN mkdir -p /var/run/mysqld \
+&& chown -R mysql:mysql /var/run/mysqld \
+&& chmod 777 /var/run/mysqld
 
 #COPY init.sql /init.sql
 COPY start_mariadb.sh /tmp/start_mariadb.sh
@@ -27,4 +27,4 @@ ENTRYPOINT ["bash","/tmp/start_mariadb.sh"]
 
 #USER mysql
 
-CMD ["mysqld_safe"]
+CMD ["mysqld","--user=mysql","--bind-address=0.0.0.0"]
