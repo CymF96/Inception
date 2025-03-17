@@ -2,7 +2,6 @@
 set -e  # Exit on error
 
 # Start MariaDB service
-service mariadb start
 #mysqld --user=mysql --bind-address=0.0.0.0
 
 # Check if database exists
@@ -10,7 +9,7 @@ if [ -d "/var/lib/mysql/$DATABASE" ]; then
 	echo "Database ($DATABASE) already exists, starting service only"
 else
 	echo "Initializing database..."
-
+	service mariadb start
 	# Execute SQL commands
 	mariadb -u root <<EOF
 	DELETE FROM mysql.user WHERE User='';
