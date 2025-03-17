@@ -5,7 +5,7 @@ bash \
 vim \
 mariadb-server \
 mariadb-client \
-rm -rf /var/lib/apt/lists/*
+&& rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/run/mysqld \
 && chown -R mysql:mysql /var/run/mysqld \
