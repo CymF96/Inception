@@ -9,6 +9,9 @@ RUN	apt update && apt install -y \
 # Modify the UID and GID for mysql to match your host system
 RUN usermod -u 1001 mysql && groupmod -g 1001 mysql
 
+RUN mkdir -p /var/run/mysqld \
+&& chown -R mysql:mysql /var/run/mysqld \
+&& chmod 777 /var/run/mysqld
 # Ensure the mysql user and group are present before using them
 #RUN groupadd -g 1001 mysql && useradd -u 1001 -g mysql mysql
 
