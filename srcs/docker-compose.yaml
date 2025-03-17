@@ -81,6 +81,7 @@ secrets:
 #  ssl_certificate_key:
 #    file: /etc/nginx/ssl/self.key
 
+volumes:
   mariadb:
     driver: local
     driver_opts:
