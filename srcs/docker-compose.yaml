@@ -55,5 +55,8 @@ networks:
 
 volumes:
   mariadb-volume:
-    type: bind
-    source: /home/cofische/data/mariadb
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/cofische/data/mariadb
+      o: bind
