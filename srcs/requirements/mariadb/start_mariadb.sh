@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e  # Exit on error
 
-mysqld --user=mysql --bind-address=0.0.0.0
+#mysqld --user=mysql --bind-address=0.0.0.0
 
 # Start MariaDB service
-#service mariadb start
+service mariadb start
 
 # Check if database exists
 if [ -d "/var/lib/mysql/$DATABASE" ]; then 
