@@ -28,6 +28,6 @@ echo "GRANT ALL ON *.* TO '$DB_ADMIN_ID'@'localhost' IDENTIFIED BY '$DB_ADMIN_PW
 #UPDATE mysql.user SET Host='localhost' WHERE User='$DB_ADMIN_ID';
 echo "GRANT SELECT, INSERT, UPDATE ON *.* TO '$DB_ID'@'localhost' IDENTIFIED BY '$DB_PWD';"
 
-mariadb < /usr/bin/init.sql
+mariadb < /usr/local/bin/init.sql
 
 fi 
