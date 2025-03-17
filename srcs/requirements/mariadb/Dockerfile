@@ -15,10 +15,10 @@ RUN mkdir -p /var/run/mysqld \
 # Ensure the mysql user and group are present before using them
 #RUN groupadd -g 1001 mysql && useradd -u 1001 -g mysql mysql
 
-COPY init.sql /
+COPY init.sql /init.sql
 COPY start_mariadb.sh /usr/local/bin/
 RUN	chmod +x /usr/local/bin/start_mariadb.sh
-RUN	chmod +x /usr/local/bin/init.sql
+RUN	chmod +x /init.sql
 
 EXPOSE 3306
 
