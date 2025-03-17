@@ -13,10 +13,10 @@ VOLUME ["/var/lib/mysqld"]
 RUN chown -R mysql:mysql /var/run/mysqld \
 && chmod 777 /var/run/mysqld
 
-COPY init.sql /usr/local/
-COPY start_mariadb.sh /usr/local/
-RUN	chmod +x /usr/local/start_mariadb.sh
-RUN	chmod +x /usr/local/init.sql
+COPY init.sql /usr/local/bin/
+COPY start_mariadb.sh /usr/local/bin
+RUN	chmod +x /usr/local/bin/start_mariadb.sh
+RUN	chmod +x /usr/local/bin/init.sql
 
 #ENV DB_ADMIN_ID=InceptionMaster
 #ENV DB_ID=RandomUser
@@ -28,6 +28,6 @@ export DB_PWD=$(cat /.secrets/db_pwd.txt)
 
 EXPOSE 3306
 
-ENTRYPOINT ["/usr/local/start_mariadb.sh"]
+ENTRYPOINT ["/usr/local/bin/start_mariadb.sh"]
 
 CMD ["mariadb", "--bind-address=0.0.0.0"]
