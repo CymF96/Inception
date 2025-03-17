@@ -14,15 +14,15 @@ RUN	apt-get update && apt-get install -y \
 #&& chmod 777 /var/run/mysqld
 
 #COPY init.sql /init.sql
-COPY start_mariadb.sh /usr/local/bin/
-RUN	chmod +x /usr/local/bin/start_mariadb.sh
+COPY start_mariadb.sh /tmp/start_mariadb.sh
+RUN	chmod +x /tmp/start_mariadb.sh
 #RUN	chmod +x /init.sql
 
 EXPOSE 3306
 
 #VOLUME ["/var/lib/mysql"]
 
-ENTRYPOINT ["bash","start_mariadb.sh"]
+ENTRYPOINT ["bash","/tmp/start_mariadb.sh"]
 
 #USER mysql
 
