@@ -1,11 +1,11 @@
 -- Secure Installation of Mariadb with removing unecessary test elements
-DELETE FROM mysql.user WHERE User='';
-DROP DATABASE IF EXISTS test;
+--DELETE FROM mysql.user WHERE User='';
+--DROP DATABASE IF EXISTS test;
 
 -- Creating 2 users: Administrator and RandomUser
-GRANT ALL ON *.* TO '$DB_ADMIN_ID'@'localhost' IDENTIFIED BY '$DB_ADMIN_PWD' WITH GRANT OPTION;
+--GRANT ALL ON *.* TO '$DB_ADMIN_ID'@'localhost' IDENTIFIED BY '$DB_ADMIN_PWD' WITH GRANT OPTION;
 -- UPDATE mysql.user SET Host='localhost' WHERE User='$DB_ADMIN_ID';
-GRANT SELECT, INSERT, UPDATE ON *.* TO 'RandomUser'@'localhost' IDENTIFIED BY 'D@ckerUzeR2025+';
+--GRANT SELECT, INSERT, UPDATE ON *.* TO 'RandomUser'@'localhost' IDENTIFIED BY 'D@ckerUzeR2025+';
 
 -- Create Example Data
 CREATE DATABASE Travel;
