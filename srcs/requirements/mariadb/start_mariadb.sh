@@ -9,7 +9,7 @@ fi
 
 echo "DB_ADMIN_ID"$DB_ADMIN_ID
 echo "DATABASE"$DATABASE
-echo cat /run/secrets/db_pwd
+cat /run/secrets/db_pwd
 echo "DB_PWD"$DB_PWD
 
 service mariadb start
