@@ -14,7 +14,7 @@ echo "DB_PWD"$DB_PWD
 
 service mariadb start
 
-if [ -d "/var/lib/mysql/$MYSQL_DATABASE" ]
+if [ -d "/var/lib/mysql/$DATABASE" ]
 then 
 	echo "Database already exists"
 else
