@@ -33,9 +33,8 @@ GRANT SELECT, INSERT, UPDATE ON *.* TO '$DB_ID'@'localhost' IDENTIFIED BY '$DB_P
 FLUSH PRIVILEGES;
 EOF
 
-# Execute additional initialization SQL file
-mariadb -u root "$DATABASE" < /usr/local/bin/init.sql
+	# Execute additional initialization SQL file
+	mariadb -u root < /usr/local/bin/init.sql
 
-echo "Database setup completed."
-
+	echo "Database setup completed."
 fi
