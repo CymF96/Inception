@@ -4,9 +4,9 @@ set -e  # Exit on error
 # Check if database exists
 if [ -d "/var/lib/mysql/$DATABASE" ]; then 
 	echo "Database ($DATABASE) already exists, starting service only"
-else
 	echo $DB_ADMIN_ID
 	echo $DB_ADMIN_PWD
+else
 	echo "Initializing database..."
 	service mariadb start
 	# Execute SQL commands
