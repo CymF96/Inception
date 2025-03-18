@@ -11,7 +11,6 @@
 if [ ! -f /var/www/cofische/wp-config.php ]; then
 
 	#move custom wp-config.php to /var/www/cofische + give permission and ownership to wd-php
-	rm -f /etc/php/8.2/fpm/pool.d/www.conf
 	mv /tmp/www.conf /etc/php/8.2/fpm/pool.d/www.conf
 	cat /etc/php/8.2/fpm/pool.d/www.conf
 	mv /tmp/wp-config.php /var/www/cofische/wp-config.php
