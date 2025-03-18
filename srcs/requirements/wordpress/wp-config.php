@@ -20,16 +20,16 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', getenv('DATABASE_NAME'));
+define('DB_NAME', getenv('DATABASE'));
 
 /** Database username */
 define('DB_USER', getenv('DB_ADMIN_ID'));
 
 /** Database password */
-define('DB_PASSWORD', file_get_contents('/run/secrets/db_admin_pwd'));
+define('DB_PASSWORD', getenv('DB_ADMIN_PWD'));
 
 /** Database hostname */
-define( 'DB_HOST', 'mariadb:3306' );
+define( 'DB_HOST', getenv('DB_HOST'));
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -48,15 +48,14 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define('AUTH_KEY', file_get_contents('/run/secrets/auth_key'));
-define('SECURE_AUTH_KEY', file_get_contents('/run/secrets/secure_auth_key'));
-define('LOGGED_IN_KEY', file_get_contents('/run/secrets/logged_in_key'));
-define('NONCE_KEY', file_get_contents('/run/secrets/nonce_key'));
-define('AUTH_SALT', file_get_contents('/run/secrets/auth_salt'));
-define('SECURE_AUTH_SALT', file_get_contents('/run/secrets/secure_auth_salt'));
-define('LOGGED_IN_SALT', file_get_contents('/run/secrets/logged_in_salt'));
-define('NONCE_SALT', file_get_contents('/run/secrets/nonce_salt'));
-
+define('AUTH_KEY', getenv('AUTH_KEY'));
+define('SECURE_AUTH_KEY', getenv('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY', getenv('LOGGED_IN_KEY'));
+define('NONCE_KEY', getenv('NONCE_KEY'));
+define('AUTH_SALT', getenv('AUTH_SALT'));
+define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
+define('LOGGED_IN_SALT', getenv('LOGGED_IN_SALT'));
+define('NONCE_SALT', getenv('NONCE_SALT'));
 /**#@-*/
 
 /**

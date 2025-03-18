@@ -1,15 +1,14 @@
 services:
   nginx:
-    build:
-      context: requirements/nginx
-      dockerfile: Dockerfile
+    build: ./requirements/nginx
+    image: nginx
     container_name: nginx
     env_file: 
       - .env
     ports:
       - 443:443
     volumes:
-      - /home/cofische/data/wordpress:/var/www/cofische
+      - wordpress-volume:/var/www/cofische
     networks:
       - frontend
     expose:
@@ -31,20 +30,22 @@ services:
     restart: on-failure
   
   wordpress:
-    build:
-      context: requirements/wordpress
-      dockerfile: Dockerfile
+    build: ./requirements/wordpress
+    image: wordpress
     container_name: wordpress
     volumes:
-      - /home/cofische/data/wordpress:/var/www/cofische    
+      - wordpress-volume:/var/www/cofische    
     networks:
       - frontend
       - backend
     expose:
       - 9000
       - 3306
+    env-file:
+      - ./requirements/wordpress/.env_wordpress
     depends_on:
       - mariadb
+    restart: on-failure
 
 networks:
   frontend:
@@ -58,4 +59,10 @@ volumes:
     driver_opts:
       type: none
       device: /home/cofische/data/mariadb
+      o: bind
+  wordpress-volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/cofische/data/wordpress
       o: bind
