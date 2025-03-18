@@ -12,6 +12,7 @@ else
 	
 	if [ ! -f /var/www/cofische/wp-config.php ]; then
 		echo "wp-config.php not found in /var/ outside directory"
+	fi
 	# Debugging: Check if the directory exists before proceeding
 	#echo "inside /var/www/cofische: " && ls -la /var/www/cofische || echo "Directory not found!"
 	#cat /var/www/cofische/wp-config.php
@@ -19,8 +20,9 @@ else
 	
 	
 	cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
-		if [ ! -f /var/www/cofische/wp-config.php ]; then
+	if [ ! -f /var/www/cofische/wp-config.php ]; then
 		echo "wp-config.php not found in /var/ inside directory"
+	fi
 
 	sleep 2
 	#if ! wp core is-installed; then
