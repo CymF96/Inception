@@ -6,6 +6,8 @@
 #    rm -rf /run/php/php8.2-fpm.sock  # Remove the stale socket file
 #fi
 
+cat /etc/php/8.2/fpm/pool.d/www.conf || echo "file doesn't exist"
+
 #service php8.2-fpm start
 
 if [ ! -f /var/www/cofische/wp-config.php ]; then
