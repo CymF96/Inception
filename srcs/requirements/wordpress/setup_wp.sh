@@ -2,7 +2,6 @@
 
 if [ ! -f wp-config.php ]; then
 	echo "wp-config.php not found"
-	ls /var/www/cofische
 
 else
 
