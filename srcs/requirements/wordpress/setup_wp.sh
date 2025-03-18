@@ -1,15 +1,13 @@
 #!/bin/bash
 
-cat /etc/php/8.2/fpm/pool.d/www.conf
-
 if [ ! -f /var/www/cofische/wp-config.php ]; then
 
 	#move custom wp-config.php to /var/www/cofische + give permission and ownership to wd-php
-	#mv /tmp/www.conf /etc/php/8.2/fpm/pool.d/www.conf
 	mv /tmp/wp-config.php /var/www/cofische/wp-config.php
 	chown -R www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
 	cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
 
+	echo "wp-config.php copied to right folder"
 	#wait for correct move and setup wordpress
 	#sleep 2
 	if ! wp core is-installed; then
