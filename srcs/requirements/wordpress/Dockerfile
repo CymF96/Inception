@@ -26,6 +26,7 @@ RUN cd /tmp \
 
 # Copy configuration files
 COPY wp-config.php /var/www/cofische/wp-config.php
+RUN chown www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
 COPY www.conf /etc/php/8.2/pool.d/www.conf
 COPY setup_wp.sh /tmp/setup_wp.sh
 RUN chmod +x /tmp/setup_wp.sh
