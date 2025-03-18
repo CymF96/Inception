@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#debugg env
+env
+
 #ensure wp-config was copied correctly to /tmp
 if [ ! -f /tmp/wp-config.php ]; then
 	echo "wp-config.php not found"
