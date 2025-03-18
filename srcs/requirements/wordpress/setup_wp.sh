@@ -14,5 +14,8 @@ else
 			--allow-root
 	fi
 
+	echo "wordpress installation completed"
+
 fi
+
 exec "$@"
