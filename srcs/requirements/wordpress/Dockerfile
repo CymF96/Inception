@@ -17,7 +17,6 @@ RUN apt update && apt install -y \
 
 # Set working directory
 RUN mkdir -p /var/www/cofische
-RUN mkdir /run/php
 
 # Install WordPress
 RUN cd /tmp \
