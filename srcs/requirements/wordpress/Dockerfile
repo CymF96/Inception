@@ -38,6 +38,6 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 EXPOSE 9000
 
 # Define volume for WordPress files
-VOLUME ["/var/www/cofische"]
+#VOLUME ["/var/www/cofische"]
 
 ENTRYPOINT ["/tmp/setup_wp.sh"]
