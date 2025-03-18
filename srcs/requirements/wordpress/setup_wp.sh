@@ -11,6 +11,7 @@ else
 	chown -R www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
 	# Debugging: Check if the directory exists before proceeding
 	echo "inside /var/www/cofische: " && ls -la /var/www/cofische || echo "Directory not found!"
+	cat /var/www/cofische/wp-config.php
 	echo "inside /etc/php/8.2/pool.d/: " && ls -la /etc/php/8.2/pool.d/|| echo "Directory not found!"
 	cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
 	sleep 2
