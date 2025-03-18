@@ -59,6 +59,10 @@ RUN cd /tmp \
     && chown -R www-data:www-data /var/www/cofische \
     && chmod -R 755 /var/www/cofische
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
+
 EXPOSE 9000
 
 CMD ["/tmp/setup_wp.sh"]
