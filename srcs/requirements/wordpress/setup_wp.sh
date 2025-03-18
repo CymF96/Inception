@@ -1,28 +1,27 @@
 #!/bin/bash
 
-if [ ! -f /var/www/cofische/wp-config.php ]; then
+if [ -f /tmp/wp-config.php ]; then
+    # Move custom wp-config.php to the right location and set permissions
+    mv -f /tmp/wp-config.php /var/www/cofische/wp-config.php
+    chown -R www-data:www-data /var/www/cofische/wp-config.php
+    chmod 644 /var/www/cofische/wp-config.php
 
-	#move custom wp-config.php to /var/www/cofische + give permission and ownership to wd-php
-	mv /tmp/wp-config.php /var/www/cofische/wp-config.php
-	chown -R www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
-	cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
+    # Change directory safely
+    cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
+    echo "wp-config.php copied to the correct folder"
 
-	echo "wp-config.php copied to right folder"
-	#wait for correct move and setup wordpress
-	#sleep 2
-	if ! wp core is-installed; then
-		wp core install --allow-root \
-			--url="$SITE_URL" \
-			--title="$SITE_TITLE" \
-			--admin_user="$WP_ADMIN_USER" \
-			--admin_password="$WP_ADMIN_PASSWORD" \
-			--admin_email="$WP_ADMIN_EMAIL" \
-		
-	fi
-
-
-	echo "wordpress installation completed"
-
+    # Check if WordPress is already installed
+    if ! wp core is-installed --allow-root --path=/var/www/cofische; then
+        wp core install --allow-root --path=/var/www/cofische \
+            --url="$SITE_URL" \
+            --title="$SITE_TITLE" \
+            --admin_user="$WP_ADMIN_USER" \
+            --admin_password="$WP_ADMIN_PASSWORD" \
+            --admin_email="$WP_ADMIN_EMAIL"
+        echo "WordPress installation completed"
+    else
+        echo "WordPress is already installed"
+    fi
 fi
 
 exec "$@"
