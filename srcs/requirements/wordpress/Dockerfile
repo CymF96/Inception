@@ -28,8 +28,8 @@ RUN cd /tmp \
 COPY wp-config.php /var/www/cofische/wp-config.php
 RUN chown www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
 COPY www.conf /etc/php/8.2/pool.d/www.conf
-COPY setup_wp.sh /tmp/setup_wp.sh
-RUN chmod +x /tmp/setup_wp.sh
+COPY setup_wp.sh /var/www/cofische/setup_wp.sh
+RUN chmod 777 /var/www/cofische/setup_wp.sh
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
@@ -40,4 +40,4 @@ EXPOSE 9000
 # Define volume for WordPress files
 #VOLUME ["/var/www/cofische"]
 
-ENTRYPOINT ["/tmp/setup_wp.sh"]
+ENTRYPOINT ["cd /var/www/cofische", "/var/www/cofische/setup_wp.sh"]
