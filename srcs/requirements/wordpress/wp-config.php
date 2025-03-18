@@ -19,6 +19,9 @@
  */
 
 // ** Database settings - You can get this info from your web host ** //
+/**Debugging test for env */
+/**echo 'DATABASE: ' . getenv('DATABASE'); */
+/**echo 'DB_ADMIN_ID: ' . getenv('DB_ADMIN_ID'); */
 /** The name of the database for WordPress */
 define('DB_NAME', getenv('DATABASE'));
 
@@ -30,6 +33,7 @@ define('DB_PASSWORD', getenv('DB_ADMIN_PWD'));
 
 /** Database hostname */
 define( 'DB_HOST', getenv('DB_HOST'));
+echo 'DB_HOST: ';
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
