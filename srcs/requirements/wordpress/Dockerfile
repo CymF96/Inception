@@ -60,4 +60,4 @@ RUN cd /tmp \
 
 EXPOSE 9000
 
-CMD ["php-fpm8.2", "cd /var/www/cofische", "./setup_wp.sh"]
+CMD ["cd /var/www/cofische", "./setup_wp.sh"]
