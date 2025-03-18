@@ -1,11 +1,9 @@
 #!/bin/bash
 
-#debugg env
-env
+if [! -f /var/www/cofische/wp-config.php]; then
 
-#ensure wp-config was copied correctly to /tmp
-if [ ! -f /tmp/wp-config.php ]; then
-	echo "wp-config.php not found"
+	echo "wordpress already installed"
+	service php8.2-fpm start
 
 else
 
@@ -27,7 +25,6 @@ else
 	#fi
 
 	echo "wordpress installation completed"
-
 fi
 
 exec "$@"
