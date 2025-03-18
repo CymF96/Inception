@@ -15,8 +15,6 @@ RUN apt update && apt install -y \
     php-zip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/www/cofische
-
 # Set secrets for Database and wordpress password
 #RUN --mount=type=secret,id=db_admin_pwd \
 #    export DB_ADMIN_PWD=$(cat /.secrets/.db_admin_pwd.txt)
@@ -56,10 +54,10 @@ RUN chmod +x /tmp/setup_wp.sh
 RUN cd /tmp \
     && curl -LO https://wordpress.org/latest.tar.gz \
     && tar xzvf latest.tar.gz \
-    && cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php \
+    && mkdir -p /var/www/cofische \
     && cp -a /tmp/wordpress/. /var/www/cofische \
-    && mv /var/www/cofische/wp-config.php /var/www/cofische/wp-config-backup.php \
-    && chown -R www-data:www-data /var/www/cofische
+    && chown -R www-data:www-data /var/www/cofische \
+    && chmod -R 755 /var/www/cofische
 
 EXPOSE 9000
 
