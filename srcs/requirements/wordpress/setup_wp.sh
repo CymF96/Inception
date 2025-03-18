@@ -2,6 +2,8 @@
 
 if [ ! -f wp-config.php ]; then
 	echo "wp-config.php not found"
+	ls /var/www/cofische
+
 else
 
 	if [ ! wp core is-installed --allow-root ]; then
