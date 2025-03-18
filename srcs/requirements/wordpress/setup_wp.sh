@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if pgrep -x "php-fpm8.2" > /dev/null; then
-    echo "Stopping existing PHP-FPM service..."
-    service php8.2-fpm stop
-    rm -rf /run/php/php8.2-fpm.sock  # Remove the stale socket file
-fi
+#if pgrep -x "php-fpm8.2" > /dev/null; then
+#    echo "Stopping existing PHP-FPM service..."
+#    service php8.2-fpm stop
+#    rm -rf /run/php/php8.2-fpm.sock  # Remove the stale socket file
+#fi
 
-service php8.2-fpm start
+#service php8.2-fpm start
 
 if [ ! -f /var/www/cofische/wp-config.php ]; then
 
