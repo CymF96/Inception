@@ -41,4 +41,4 @@ EXPOSE 9000
 
 VOLUME ["/var/www/cofische"]
 
-ENTRYPOINT ["/tmp/setup_wp.sh"]
+ENTRYPOINT ["env","/tmp/setup_wp.sh"]
