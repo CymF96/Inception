@@ -15,9 +15,6 @@ RUN apt update && apt install -y \
     php-zip \
     && rm -rf /var/lib/apt/lists/*
 
-# Define volume for WordPress files
-#VOLUME ["/var/www/cofische"]
-
 # Copy configuration files
 COPY wp-config.php /var/www/cofische/wp-config.php
 COPY www.conf /etc/php/8.2/pool.d/www.conf
@@ -38,5 +35,8 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     && mv wp-cli.phar /usr/local/bin/wp
 
 EXPOSE 9000
+
+# Define volume for WordPress files
+VOLUME ["/var/www/cofische"]
 
 ENTRYPOINT ["/tmp/setup_wp.sh"]
