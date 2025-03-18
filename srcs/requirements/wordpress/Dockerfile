@@ -22,7 +22,7 @@ RUN mkdir -p /var/www/cofische
 RUN cd /tmp \
     && curl -LO https://wordpress.org/latest.tar.gz \
     && tar xzvf latest.tar.gz \
-    && cp /tmp/. /var/www/cofische/ \
+    && cp -a /tmp/wordpress/. /var/www/cofische/ \
     && chown -R www-data:www-data /var/www/cofische \
     && chmod -R 755 /var/www/cofische \
     && rm -rf /tmp/wordpress/*
