@@ -1,11 +1,6 @@
 #!/bin/bash
 
-if [! -f /var/www/cofische/wp-config.php]; then
-
-	echo "wordpress already installed"
-	service php8.2-fpm start
-
-else
+if [ ! -f /var/www/cofische/wp-config.php ]; then
 
 	#move custom wp-config.php to /var/www/cofische + give permission and ownership to wd-php
 	mv /tmp/wp-config.php /var/www/cofische/wp-config.php
@@ -24,7 +19,14 @@ else
 		
 	#fi
 
+
 	echo "wordpress installation completed"
+
+else
+
+	echo "wordpress already installed"
+	service php8.2-fpm start
+
 fi
 
 exec "$@"
