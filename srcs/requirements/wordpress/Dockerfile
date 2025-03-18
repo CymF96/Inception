@@ -15,6 +15,8 @@ RUN apt update && apt install -y \
     php-zip \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /var/www/cofische
+
 # Set secrets for Database and wordpress password
 #RUN --mount=type=secret,id=db_admin_pwd \
 #    export DB_ADMIN_PWD=$(cat /.secrets/.db_admin_pwd.txt)
