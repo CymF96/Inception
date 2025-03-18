@@ -14,4 +14,5 @@ else
 			--allow-root
 	fi
 
+fi
 exec "$@"
