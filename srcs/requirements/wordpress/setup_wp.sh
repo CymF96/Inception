@@ -2,7 +2,7 @@
 
 # Debugging: Check if the directory exists before proceeding
 echo "Checking if /var/www/cofische exists..."
-ls -ld /var/www/cofische || echo "Directory not found!"
+echo "inside /var/www/cofische: " && ls -ld /var/www/cofische || echo "Directory not found!"
 
 # Wait to ensure the volume is mounted
 sleep 5
