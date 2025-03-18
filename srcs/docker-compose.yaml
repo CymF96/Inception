@@ -34,7 +34,7 @@ services:
     image: wordpress
     container_name: wordpress
     volumes:
-      - /home/cofische/data/wordpress:/var/www/cofische    
+      - wordpress-volume:/var/www/cofische    
     networks:
       - frontend
       - backend

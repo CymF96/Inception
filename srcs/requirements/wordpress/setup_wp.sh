@@ -9,11 +9,13 @@ echo "inside /var/www/cofische: " && ls -ld /var/www/cofische || echo "Directory
 
 cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
 
-if [ ! -f /var/www/cofische/wp-config.php ]; then
+if [ ! -f /tmp/wp-config.php ]; then
 	echo "wp-config.php not found"
 
 else
 
+	mv /tmp/wp-config.php /var/www/cofische/wp-config.php
+	chowwn -R www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
 	if ! wp core is-installed; then
 		wp core install --allow-root \
 			--url="$SITE_URL" \
