@@ -6,13 +6,14 @@
 #    rm -rf /run/php/php8.2-fpm.sock  # Remove the stale socket file
 #fi
 
-cat /etc/php/8.2/fpm/pool.d/www.conf || echo "file doesn't exist"
-
 #service php8.2-fpm start
 
 if [ ! -f /var/www/cofische/wp-config.php ]; then
 
 	#move custom wp-config.php to /var/www/cofische + give permission and ownership to wd-php
+	rm -f /etc/php/8.2/fpm/pool.d/www.conf
+	mv /tmp/www.conf /etc/php/8.2/fpm/pool.d/www.conf
+	cat /etc/php/8.2/fpm/pool.d/www.conf
 	mv /tmp/wp-config.php /var/www/cofische/wp-config.php
 	chown -R www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
 	cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }

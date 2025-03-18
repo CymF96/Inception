@@ -33,7 +33,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 # Copy WordPress files into the working directory
 COPY wp-config.php /tmp/
-COPY www.conf /etc/php/8.2/pool.d/www.conf
+COPY www.conf /tmp/
 COPY setup_wp.sh /tmp/setup_wp.sh
 RUN chmod +x /tmp/setup_wp.sh /tmp/wp-config.php
 
