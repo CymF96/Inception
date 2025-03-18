@@ -50,6 +50,7 @@ VOLUME ["/var/www/cofische"]
 COPY wp-config.php /var/www/cofische/wp-config.php
 COPY www.conf /etc/php/8.2/pool.d/www.conf
 COPY setup_wp.sh /tmp/setup_wp.sh
+RUN chmod +x /tmp/setup_wp.sh
 
 # Install WordPress and set permissions
 RUN cd /tmp \
