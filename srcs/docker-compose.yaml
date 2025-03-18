@@ -40,7 +40,6 @@ services:
       - backend
     expose:
       - 9000
-      - 3306
     env_file:
       - ./requirements/wordpress/.env_wordpress
     depends_on:

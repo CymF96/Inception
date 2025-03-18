@@ -24,13 +24,13 @@
 /**echo 'DB_ADMIN_ID: ' . getenv('DB_ADMIN_ID'); */
 /** The name of the database for WordPress */
 define('DB_NAME', getenv('DATABASE'));
-
+echo 'DATABSE: ' . DB_NAME;
 /** Database username */
 define('DB_USER', getenv('DB_ADMIN_ID'));
-
+echo 'DB_USER: ' . DB_USER;
 /** Database password */
 define('DB_PASSWORD', getenv('DB_ADMIN_PWD'));
-
+echo 'DB_PASSWORD: ' . DB_PASSWORD;
 /** Database hostname */
 define( 'DB_HOST', getenv('DB_HOST'));
 echo 'DB_HOST: ' . DB_HOST;
