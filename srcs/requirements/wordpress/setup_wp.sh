@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /var/www/cofische
+
 if [ ! -f /var/www/cofische/wp-config.php ]; then
 	echo "wp-config.php not found"
 

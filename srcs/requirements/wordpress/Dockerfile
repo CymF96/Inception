@@ -47,8 +47,8 @@ VOLUME ["/var/www/cofische"]
 # Copy configuration files
 COPY wp-config.php /var/www/cofische/wp-config.php
 COPY www.conf /etc/php/8.2/pool.d/www.conf
-COPY setup_wp.sh /var/www/cofische/setup_wp.sh
-RUN chmod +x /var/www/cofische/setup_wp.sh
+COPY setup_wp.sh /tmp/setup_wp.sh
+RUN chmod +x /tmp/setup_wp.sh
 
 # Install WordPress and set permissions
 RUN cd /tmp \
@@ -65,4 +65,4 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 EXPOSE 9000
 
-CMD ["/var/www/cofische/setup_wp.sh"]
+CMD ["/tmp/setup_wp.sh"]
