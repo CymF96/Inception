@@ -9,11 +9,19 @@ else
 
 	mv /tmp/wp-config.php /var/www/cofische/wp-config.php
 	chown -R www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
+	
+	if [ ! -f /var/www/cofische/wp-config.php ]; then
+		echo "wp-config.php not found in /var/ outside directory"
 	# Debugging: Check if the directory exists before proceeding
 	#echo "inside /var/www/cofische: " && ls -la /var/www/cofische || echo "Directory not found!"
-	cat /var/www/cofische/wp-config.php
+	#cat /var/www/cofische/wp-config.php
 	#echo "inside /etc/php/8.2/pool.d/: " && ls -la /etc/php/8.2/pool.d/|| echo "Directory not found!"
+	
+	
 	cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
+		if [ ! -f /var/www/cofische/wp-config.php ]; then
+		echo "wp-config.php not found in /var/ inside directory"
+
 	sleep 2
 	#if ! wp core is-installed; then
 	#	wp core install --allow-root \
