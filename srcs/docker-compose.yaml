@@ -41,8 +41,8 @@ services:
     expose:
       - 9000
       - 3306
-    env-file:
-      - .env_wordpress
+    env_file:
+      - ./requirements/wordpress/.env_wordpress
     depends_on:
       - mariadb
     restart: on-failure
