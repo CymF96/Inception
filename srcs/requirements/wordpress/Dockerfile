@@ -28,7 +28,6 @@ RUN chmod +x /tmp/setup_wp.sh
 # Install WordPress
 RUN curl -LO https://wordpress.org/latest.tar.gz \
     && tar xzvf latest.tar.gz \
-    && cp -a /tmp/wordpress/. . \
     && chown -R www-data:www-data /var/www/cofische \
     && chmod -R 755 /var/www/cofische
 
