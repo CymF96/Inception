@@ -65,4 +65,4 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 EXPOSE 9000
 
-CMD ["/tmp/setup_wp.sh"]
+ENTRYPOINT ["/tmp/setup_wp.sh"]

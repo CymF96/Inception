@@ -1,6 +1,13 @@
 #!/bin/bash
 
-cd /var/www/cofische
+# Debugging: Check if the directory exists before proceeding
+echo "Checking if /var/www/cofische exists..."
+ls -ld /var/www/cofische || echo "Directory not found!"
+
+# Wait to ensure the volume is mounted
+sleep 5
+
+cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
 
 if [ ! -f /var/www/cofische/wp-config.php ]; then
 	echo "wp-config.php not found"
