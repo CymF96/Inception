@@ -17,6 +17,7 @@ RUN apt update && apt install -y \
 
 # Set working directory
 RUN mkdir -p /var/www/cofische
+RUN mkdir /run/php
 
 # Install WordPress
 RUN cd /tmp \
@@ -42,3 +43,5 @@ EXPOSE 9000
 VOLUME ["/var/www/cofische"]
 
 ENTRYPOINT ["php-fpm8.2", "/tmp/setup_wp.sh"]
+
+CMD ["/usr/sbin/php-fpm8.2", "-F"]
