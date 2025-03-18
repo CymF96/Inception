@@ -22,11 +22,6 @@ if [ ! -f /var/www/cofische/wp-config.php ]; then
 
 	echo "wordpress installation completed"
 
-else
-
-	echo "wordpress already installed"
-	service php8.2-fpm start
-
 fi
 
 exec "$@"
