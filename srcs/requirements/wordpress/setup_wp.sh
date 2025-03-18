@@ -1,11 +1,11 @@
 #!/bin/bash
 
+# Wait to ensure the volume is mounted
+sleep 500
+
 # Debugging: Check if the directory exists before proceeding
 echo "Checking if /var/www/cofische exists..."
 echo "inside /var/www/cofische: " && ls -ld /var/www/cofische || echo "Directory not found!"
-
-# Wait to ensure the volume is mounted
-sleep 1000
 
 cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
 
