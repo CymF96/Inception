@@ -10,8 +10,8 @@ else
 	mv /tmp/wp-config.php /var/www/cofische/wp-config.php
 	chown -R www-data:www-data /var/www/cofische/wp-config.php && chmod +x /var/www/cofische/wp-config.php
 	# Debugging: Check if the directory exists before proceeding
-	which wp-config.php
 	echo "inside /var/www/cofische: " && ls -ld /var/www/cofische || echo "Directory not found!"
+	echo "inside /etc/php/8.2/pool.d/: " && ls -ld /etc/php/8.2/pool.d/|| echo "Directory not found!"
 	cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
 	sleep 2
 	if ! wp core is-installed; then
