@@ -24,20 +24,14 @@
 /**echo 'DB_ADMIN_ID: ' . getenv('DB_ADMIN_ID'); */
 /** The name of the database for WordPress */
 define('DB_NAME', getenv('DATABASE'));
-echo 'DATABSE: ' . DB_NAME;
 /** Database username */
 define('DB_USER', getenv('DB_ADMIN_ID'));
-echo 'DB_USER: ' . DB_USER;
 /** Database password */
 define('DB_PASSWORD', getenv('DB_ADMIN_PWD'));
-echo 'DB_PASSWORD: ' . DB_PASSWORD;
 /** Database hostname */
 define( 'DB_HOST', getenv('DB_HOST'));
-echo 'DB_HOST: ' . DB_HOST;
-
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
-
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
