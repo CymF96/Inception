@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wait to ensure the volume is mounted
-sleep 50
+sleep 10
 
 # Debugging: Check if the directory exists before proceeding
 echo "Checking if /var/www/cofische exists..."
