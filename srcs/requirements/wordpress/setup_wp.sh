@@ -5,8 +5,9 @@ echo "Checking if /var/www/cofische exists..."
 echo "inside /var/www/cofische: " && ls -ld /var/www/cofische || echo "Directory not found!"
 
 # Wait to ensure the volume is mounted
-sleep 100
+sleep 1000
 
+cd /var/www/cofische || { echo "Failed to change directory!"; exit 1; }
 
 if [ ! -f /var/www/cofische/wp-config.php ]; then
 	echo "wp-config.php not found"
