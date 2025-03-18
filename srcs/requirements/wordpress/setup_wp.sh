@@ -1,5 +1,7 @@
 #!/bin/bash
 
+service php8.2-fpm start
+
 if [ ! -f /var/www/cofische/wp-config.php ]; then
 
 	#move custom wp-config.php to /var/www/cofische + give permission and ownership to wd-php
