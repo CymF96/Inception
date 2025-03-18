@@ -21,4 +21,6 @@ VOLUME ["/var/lib/mysql"]
 
 ENTRYPOINT ["bash","/tmp/start_mariadb.sh"]
 
+USER mysql
+
 CMD ["mysqld", "--bind-address=0.0.0.0"]
