@@ -15,12 +15,12 @@ else
 	ls -ld /var/run/mysqld
 	ls -l /var/run/mysqld
 	ls -ld /var/lib/mysql
-	ls -l /var/lib/mysql
+	ls -l /var/log
 	echo "Showing the last 50 lines of MariaDB log:...."
 	echo '\n'
 	service mysql status
 	echo "\n"
-    tail -n 50 /var/log/syslog | grep mysql
+    #tail -n 50 /var/log/syslog | grep mysql
 	#cat /var/run/mysqld/mysqld.sock
 fi
 
