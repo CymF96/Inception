@@ -17,7 +17,7 @@ RUN openssl req \
 -keyout /etc/nginx/ssl/private/key.key \
 -subj "/C=UK/ST=ENGLAND/L=LONDON/O=42/OU=INCEPTION/CN=cofische.42.fr"
 
-VOLUME ["/var/www/cofische"]
+#VOLUME ["/var/www/cofische"]
 
 EXPOSE 443
 
