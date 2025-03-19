@@ -23,16 +23,16 @@
 /**echo 'DATABASE: ' . getenv('DATABASE'); */
 /**echo 'DB_ADMIN_ID: ' . getenv('DB_ADMIN_ID'); */
 /** The name of the database for WordPress */
-define('DB_NAME', 'Travel');
+define('DB_NAME', getenv('DATABASE'));
 
 /** Database username */
-define('DB_USER', 'InceptionMaster');
+define('DB_USER', getenv('DB_ADMIN_ID'));
 
 /** Database password */
-define('DB_PASSWORD', 'D@ckerDBR%%t2025-');
+define('DB_PASSWORD', getenv('DB_ADMIN_PWD'));
 
 /** Database hostname */
-define( 'DB_HOST', 'mariadb:3306');
+define( 'DB_HOST', getenv('DB_HOST'));
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -51,14 +51,15 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define('AUTH_KEY', 'put your unique phrase here');
-define('SECURE_AUTH_KEY', 'put your unique phrase here');
-define('LOGGED_IN_KEY', 'put your unique phrase here');
-define('NONCE_KEY', 'put your unique phrase here');
-define('AUTH_SALT', 'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT', 'put your unique phrase here');
-define('NONCE_SALT', 'put your unique phrase here');
+define('AUTH_KEY',         '|-B_+----GE&LtNwKB#s_|1Y^|~-|0tjr|`E&f0XRM q*,YSrk5g));H9r|Wb&G<');
+define('SECURE_AUTH_KEY',  'EPw6St/=YK)Ln#bO ;kWjjeZv/pqtIQdrB5Fk;Q^-`*nd]4g}Zfbt?cX)D~l%bFf');
+define('LOGGED_IN_KEY',    'zd;.tuljvKr[x!vs74u0#+Z=ct|8&=8Yw$dlZ-V<Ad4|L K0o9i/]wifE~$[OOJu');
+define('NONCE_KEY',        '+|8c2F#`%hq*QJm^tNJ-]z<>myV,mR*4,35F~uWgsAp;$BMq+Tq-N^F&2pBUWw&g');
+define('AUTH_SALT',        '[0BG{uD98{:&at~.(>H8:8u&UpKT! TH6SU4G5jTA|H9-9g?dz4)M] `T-([)oA6');
+define('SECURE_AUTH_SALT', '0rU*bucV,MPg)2O0tZr%$_7 n+g${%pFAN=IefVEnRGos>Z)/{W>V@zwm3o2^f+&');
+define('LOGGED_IN_SALT',   'cUB$,_q$8UL]gDV(]3b! upu#k1j0mf`}F]:a4BM5osS#v9%4D+Ld8RJnu9{-r|z');
+define('NONCE_SALT',       'Exc,/a+-@yH/M|K()>[P7Ah^*7PVe@>^-~-[Nf[mW4FZ{nk:(MNY0~4Dm!tI#YRb');
+
 /**#@-*/
 
 /**
