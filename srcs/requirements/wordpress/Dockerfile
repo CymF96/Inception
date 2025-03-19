@@ -3,6 +3,8 @@ FROM debian:bookworm
 RUN apt update && apt install -y \
     vim \
     curl \
+    dnsutils \
+    iputils \
     php-mysql \
     php-fpm \
     php-curl \
