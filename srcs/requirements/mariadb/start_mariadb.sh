@@ -2,10 +2,8 @@
 set -e  # Exit on error
 
 # Wait for MariaDB to be ready
-until mariadb -u root -e "SELECT 1" &> /dev/null; do
-    echo "Waiting for MariaDB..."
-    sleep 2
-done
+service mariadb start
+sleep 2
 
 # Check if database exists
 if mariadb -u root -e "SHOW DATABASES LIKE '$DATABASE';" | grep -q "$DATABASE"; then 
