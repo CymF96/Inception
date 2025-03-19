@@ -4,6 +4,9 @@ set -e  # Exit on error
 # Start MySQL service
 service mysql start
 
+id mysql
+cat /var/run/mysqld/mysqld.sock
+
 # Create database Travel if not exists
 echo "Creating new database $DATABASE"
 mysql -e "CREATE DATABASE IF NOT EXISTS $DATABASE;"
