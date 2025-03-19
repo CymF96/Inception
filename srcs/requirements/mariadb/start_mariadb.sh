@@ -36,6 +36,8 @@ mysql -e "GRANT SELECT, INSERT, UPDATE ON ${DATABASE}.* TO '${DB_ID}'@'%';"
 # Flush privileges to apply changes
 mysql -e "FLUSH PRIVILEGES;"
 
-service mysql restart
-
 echo "Users created successfully and MySQL service restart"
+
+exec$@
+
+
