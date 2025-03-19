@@ -5,7 +5,7 @@ RUN apt-get update -y && \
 
 COPY start_mariadb.sh /tmp/start_mariadb.sh
 
-RUN usermod -u 1001 mysql && groupmod -g 1001 mysql
+#RUN usermod -u 1001 mysql && groupmod -g 1001 mysql
 
 RUN  chmod +x /tmp/start_mariadb.sh
 

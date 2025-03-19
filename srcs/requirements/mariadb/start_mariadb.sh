@@ -5,8 +5,6 @@ set -e  # Exit on error
 service mysql start
 
 # Wait for 5 seconds to allow the service to start
-sleep 2
-
 # Check if the MariaDB service is running
 if ! pgrep -x "mysqld" > /dev/null; then
     echo "MariaDB service has failed to start."
