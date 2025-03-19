@@ -6,7 +6,7 @@ service mysql start
 
 # Wait for 5 seconds to allow the service to start
 # Check if the MariaDB service is running
-if ! pgrep -x "mysqld" > /dev/null; then
+if ! ps aux | grep -v grep | grep -q "mysqld"; then
     echo "MariaDB service has failed to start."
     # Show the latest logs
     echo "Showing the last 50 lines of MariaDB log:...."
