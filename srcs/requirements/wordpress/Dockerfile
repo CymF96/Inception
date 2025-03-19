@@ -37,8 +37,6 @@ COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
 COPY setup_wp.sh /tmp/setup_wp.sh
 RUN chmod +x /tmp/setup_wp.sh
 
-RUN mkdir /run/php
-
 EXPOSE 9000
 
 ENTRYPOINT ["/tmp/setup_wp.sh"]
