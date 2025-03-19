@@ -15,8 +15,10 @@ if [ ! -d "/var/run/mysqld" ]; then
 else
     echo "MariaDB service is running."
 	ls -ld /var/run/mysqld
+	ls -l /var/run/mysqld
 	ls -ld /var/lib/mysql
-	cat /var/run/mysqld/mysqld.sock
+	ls -l /var/lib/mysql
+	#cat /var/run/mysqld/mysqld.sock
 fi
 
 echo "END OF CHECK"
