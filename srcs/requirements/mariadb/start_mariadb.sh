@@ -66,9 +66,9 @@ mysqladmin -u "${DB_ADMIN_ID}" -p"${DB_ADMIN_PWD}" shutdown
 echo "Users created successfully and MySQL service shut down."
 echo "."
 echo "DEBUG:"
-ls -l /var/run/mysqld
-echo "."
-cat /var/run/mysqld/mysqld.sock
+ls -la /var/run/mysqld
+#echo "."
+#cat /var/run/mysqld/mysqld.sock
 echo "."
 cat /var/log/mysql/error.log
 echo "."
