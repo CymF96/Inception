@@ -64,7 +64,14 @@ mysql -e "FLUSH PRIVILEGES;"
 mysqladmin -u "${DB_ADMIN_ID}" -p"${DB_ADMIN_PWD}" shutdown
 
 echo "Users created successfully and MySQL service shut down."
-
+ls -ld /var/run/mysqld
+ls -l /var/run/mysqld
+ls -ld /var/lib/mysql
+ls -l /var/log/mysql
+echo "Showing the last 50 lines of MariaDB log:...."
+echo '\n'
+service mysql status
+echo "\n"
 exec "$@"
 
 ##!/bin/bash
