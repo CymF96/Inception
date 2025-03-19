@@ -10,7 +10,8 @@ if [ ! -f /var/www/cofische/wp-config.php ]; then
 
 	echo "WordPress installation completed"
 	sleep 5
-
+	cd /var/www/cofische
+	
 	wp core install --allow-root --path=/var/www/cofische \
 		--url="$SITE_URL" \
 		--title="$SITE_TITLE" \
