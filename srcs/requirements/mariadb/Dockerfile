@@ -1,7 +1,7 @@
 FROM debian:buster
 
 RUN apt-get update -y && \
-    apt-get install -y mariadb-server mariadb-client
+    apt-get install -y mariadb-server mariadb-client dnsutils
 
 COPY start_mariadb.sh /tmp/start_mariadb.sh
 RUN  chmod +x /tmp/start_mariadb.sh
