@@ -18,7 +18,7 @@ else
 	ls -l /var/lib/mysql
 	echo "Showing the last 50 lines of MariaDB log:...."
 	echo "\n"
-    cat /var/log/mysql/error.log
+    journalctl -xe | grep mysql
 	#cat /var/run/mysqld/mysqld.sock
 fi
 
