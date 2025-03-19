@@ -9,7 +9,8 @@ service mysql start
 if ! pgrep -x "mysqld" > /dev/null; then
     echo "MariaDB service has failed to start."
     # Show the latest logs
-    echo "Showing the last 50 lines of MariaDB log:"
+    echo "Showing the last 50 lines of MariaDB log:...."
+	echo "\n"
     tail -n 50 /var/log/mysql/error.log
 else
     echo "MariaDB service is running."
@@ -17,6 +18,8 @@ else
 	ls -ld /var/lib/mysql
 	cat /var/run/mysqld/mysqld.sock
 fi
+
+echo "END OF CHECK"
 
 id mysql
 
