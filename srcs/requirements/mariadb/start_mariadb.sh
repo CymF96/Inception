@@ -9,15 +9,16 @@ service mysql start
 if [ ! -d "/var/run/mysqld" ]; then
     echo "MariaDB service has failed to start."
     # Show the latest logs
-    echo "Showing the last 50 lines of MariaDB log:...."
-	echo "\n"
-    tail -n 50 /var/log/mysql/error.log
+
 else
     echo "MariaDB service is running."
 	ls -ld /var/run/mysqld
 	ls -l /var/run/mysqld
 	ls -ld /var/lib/mysql
 	ls -l /var/lib/mysql
+	echo "Showing the last 50 lines of MariaDB log:...."
+	echo "\n"
+    tail -n 50 /var/log/mysql/error.log
 	#cat /var/run/mysqld/mysqld.sock
 fi
 
