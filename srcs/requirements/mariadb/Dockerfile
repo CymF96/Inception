@@ -1,7 +1,7 @@
 FROM debian:buster
 
 RUN apt-get update -y && \
-    apt-get install -y mariadb
+    apt-get install -y mariadb-server mariadb-client
 
 COPY start_mariadb.sh /tmp/start_mariadb.sh
 
