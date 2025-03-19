@@ -5,7 +5,7 @@ set -e  # Exit on error
 
 
 id mysql
-ls -ld /var/run/mysqld/mysqld.sock
+ls -ld /var/run/mysqld/
 ls -ld /var/lib/mysql
 cat /var/run/mysqld/mysqld.sock
 service mysql start
