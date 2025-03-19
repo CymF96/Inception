@@ -6,6 +6,8 @@ then
 else
 
 	mkdir -p $WP_PATH
+
+	curl -LO https://wordpress.org/latest.tar.gz -O /tmp/wordpress.tar.gz
 	tar -xzf /tmp/wordpress.tar.gz -C /tmp
 	mv /tmp/wordpress/* $WP_PATH
 
