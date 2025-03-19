@@ -3,7 +3,7 @@ FROM debian:buster
 RUN apt-get update -y && \
     apt-get install -y mariadb-server
 
-COPY ./start_mariadb /tmp/start_mariadb.sh
+COPY start_mariadb /tmp/start_mariadb.sh
 
 RUN  chmod +x /tmp/script.sh
 
