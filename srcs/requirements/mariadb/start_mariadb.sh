@@ -68,7 +68,7 @@ echo "."
 echo "DEBUG:"
 ls -la /var/run/mysqld
 echo "."
-service mariadb start
+service mysql start
 echo "Mariadb status"
 service mysql status
 echo "."
