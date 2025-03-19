@@ -15,7 +15,7 @@ else
 	ls -ld /var/run/mysqld
 	ls -l /var/run/mysqld
 	ls -ld /var/lib/mysql
-	ls -l /var/log
+	ls -l /var/log/mysql
 	echo "Showing the last 50 lines of MariaDB log:...."
 	echo '\n'
 	service mysql status
