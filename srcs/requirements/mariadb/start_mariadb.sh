@@ -26,15 +26,12 @@ VALUES
 
 # Create admin user with root privileges
 echo "Creating new users $DB_ADMIN_ID && $DB_ID"
-mysql -e "CREATE USER IF NOT EXISTS '${DB_ADMIN_ID}'@'%' IDENTIFIED BY '${DB_ADMIN_PWD}';"
-mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_ADMIN_ID}'@'%' WITH GRANT OPTION;"
-
-# Create normal user
 mysql -e "CREATE USER IF NOT EXISTS '${DB_ID}'@'%' IDENTIFIED BY '${DB_PWD}';"
-mysql -e "GRANT SELECT, INSERT, UPDATE ON ${DATABASE}.* TO '${DB_ID}'@'%';"
-
-# Flush privileges to apply changes
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_ID}'@'%' WITH GRANT OPTION;"
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '${DB_ROOT_PWD}';"
 mysql -e "FLUSH PRIVILEGES;"
+mysql -u root --skip-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PWD}';"
+mysqladmin -u root -p$DB_ROOT_PWD shutdown
 
 echo "Users created successfully and MySQL service restart"
 

@@ -16,4 +16,4 @@ EXPOSE "3306"
 
 ENTRYPOINT ["bash", "/tmp/start_mariadb.sh"]
 
-CMD ["mysqld"]
+CMD ["mysqld_safe"]

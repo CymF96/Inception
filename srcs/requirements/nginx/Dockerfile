@@ -7,9 +7,10 @@ vim \
 dnsutils \
 openssl 
 
-RUN mkdir /etc/nginx/ssl /etc/nginx/ssl/certs /etc/nginx/ssl/private
+COPY nginx.conf /etc/nginx/sites-available/cofische.conf
 
-COPY nginx.conf /etc/nginx/conf.d
+RUN mkdir /etc/nginx/ssl /etc/nginx/ssl/certs /etc/nginx/ssl/private
+RUN ln -s /etc/nginx/sites-available/cofische.conf /etc/nginx/sites-enabled/cofische.conf
 
 RUN openssl req \
 -newkey rsa:4096 -x509 -sha256 -days 100 -nodes \

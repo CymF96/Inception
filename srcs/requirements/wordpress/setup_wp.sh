@@ -39,7 +39,7 @@ else
 	echo "🚀 Installing WordPress CLI..."
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 	chmod +x wp-cli.phar
-	mv wp-cli.phar /usr/local/bin/wp
+	mv wp-cli.phar /usr/local/bin/wp && wp cli update
 
 	echo "🌐 Setting up WordPress..."
 	sudo -u www-data wp core install --path=$WP_PATH \
