@@ -1,25 +1,31 @@
 #!/bin/bash
-set -e  # Exit on error
+set -e
 
-# Wait for MariaDB to be ready
-service mariadb start
-sleep 2
-
-# Check if database exists
-if mariadb -u root -e "SHOW DATABASES LIKE '$DATABASE';" | grep -q "$DATABASE"; then 
-    echo "Database ($DATABASE) already exists, starting service only"
-else
+# Ensure the data directory is initialized
+if [ ! -d "/var/lib/mysql/mysql" ]; then
     echo "Initializing database..."
-    
+    mysqld --initialize-insecure --user=mysql --datadir=/var/lib/mysql
+
+    echo "Starting MariaDB for initial setup..."
+    mysqld_safe --bind-address=0.0.0.0 &
+
+    # Wait for MariaDB to be ready
+    sleep 5
+    until mariadb -u root -e "SELECT 1" &>/dev/null; do
+        echo "Waiting for MariaDB to start..."
+        sleep 2
+    done
+
+    echo "Initializing database tables..."
     mariadb -u root <<EOF
     DELETE FROM mysql.user WHERE User='';
     DROP DATABASE IF EXISTS test;
-    CREATE DATABASE $DATABASE;
-    GRANT ALL ON *.* TO '$DB_ADMIN_ID'@'%' IDENTIFIED BY '$DB_ADMIN_PWD' WITH GRANT OPTION;
-    GRANT SELECT, INSERT, UPDATE ON *.* TO '$DB_ID'@'%' IDENTIFIED BY '$DB_PWD';
+    CREATE DATABASE IF NOT EXISTS $DATABASE;
+    GRANT ALL ON $DATABASE.* TO '$DB_ADMIN_ID'@'localhost' IDENTIFIED BY '$DB_ADMIN_PWD' WITH GRANT OPTION;
+    GRANT SELECT, INSERT, UPDATE ON $DATABASE.* TO '$DB_ID'@'localhost' IDENTIFIED BY '$DB_PWD';
     USE $DATABASE;
     
-    CREATE TABLE Visited_countries (
+    CREATE TABLE IF NOT EXISTS Visited_countries (
         country VARCHAR(50),
         nb_visits INT,
         last_visited DATE
@@ -34,4 +40,6 @@ EOF
     echo "Database setup completed."
 fi
 
-exec "$@"
+# Start MariaDB in the foreground
+exec mysqld_safe --bind-address=0.0.0.0
+
