@@ -9,15 +9,15 @@ echo "Creating new database $DATABASE"
 mysql -e "CREATE DATABASE IF NOT EXISTS $DATABASE;"
 
 # Create the table Visited_countries
-mysql -e "USE $DATABASE;"
-mysql -e "CREATE TABLE IF NOT EXISTS Visited_countries (
+echo "Creating elements inside $DATABASE"
+mysql -e "USE $DATABASE; CREATE TABLE IF NOT EXISTS Visited_countries (
     country VARCHAR(50),
     nb_visits INT,
     last_visited DATE
 );"
 
 # Insert initial data into Visited_countries table
-mysql -e "INSERT INTO Visited_countries (country, nb_visits, last_visited) 
+mysql -e "USE $DATABASE; INSERT INTO Visited_countries (country, nb_visits, last_visited) 
 VALUES 
     ('France', 5, '2024-12-25'),
     ('Japan', 1, '2019-09-15'),
