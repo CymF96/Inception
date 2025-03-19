@@ -8,11 +8,10 @@ services:
     ports:
       - 443:443
     volumes:
-      - wordpress-volume:/var/www/html
+      - wordpress-volume:/var/www/cofische
     networks:
       - inception
-    expose:
-      - 9000
+
     depends_on:
       - wordpress
   
@@ -34,7 +33,7 @@ services:
     image: wordpress
     container_name: wordpress
     volumes:
-      - wordpress-volume:/var/www/html   
+      - wordpress-volume:/var/www/cofische   
     networks:
       - inception
     expose:
