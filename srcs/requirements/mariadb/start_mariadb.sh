@@ -5,6 +5,8 @@ set -e  # Exit on error
 
 
 id mysql
+ls -ld /var/run/mysqld/mysqld.sock
+ls -ld /var/lib/mysql
 cat /var/run/mysqld/mysqld.sock
 service mysql start
 # Create database Travel if not exists
