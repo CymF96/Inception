@@ -61,7 +61,7 @@ mysql -e "GRANT SELECT, INSERT, UPDATE ON ${DATABASE}.* TO '${DB_ID}'@'%';"
 mysql -e "FLUSH PRIVILEGES;"
 
 # Shut down MySQL service (you may need to pass root user credentials)
-mysqladmin -u root -p"${mysql_root_password}" shutdown
+mysqladmin -u "${DB_ADMIN_ID}" -p"${DB_ADMIN_PWD}" shutdown
 
 echo "Users created successfully and MySQL service shut down."
 
