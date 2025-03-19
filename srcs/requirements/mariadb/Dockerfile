@@ -5,8 +5,7 @@ mariadb-server \
 mariadb-client \
 vim \
 curl \
-dnsutils \
-iputils
+dnsutils 
 
 COPY start_mariadb.sh /tmp/start_mariadb.sh
 RUN  chmod +x /tmp/start_mariadb.sh

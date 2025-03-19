@@ -5,7 +5,6 @@ nginx \
 curl \
 vim \
 dnsutils \
-iputils \
 openssl 
 
 RUN mkdir /etc/nginx/ssl /etc/nginx/ssl/certs /etc/nginx/ssl/private
