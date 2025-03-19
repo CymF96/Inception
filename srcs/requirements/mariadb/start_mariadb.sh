@@ -8,7 +8,7 @@ service mysql start
 mysql -e "CREATE DATABASE IF NOT EXISTS $DATABASE;"
 
 # Create the table Visited_countries
-mysql -e "USE $DATABASE;"
+#mysql -e "USE $DATABASE;"
 mysql -e "CREATE TABLE IF NOT EXISTS Visited_countries (
     country VARCHAR(50),
     nb_visits INT,
