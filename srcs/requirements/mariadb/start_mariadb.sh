@@ -5,10 +5,11 @@ set -e  # Exit on error
 service mysql start
 
 # Create database Travel if not exists
+echo "Creating new database $DATABASE"
 mysql -e "CREATE DATABASE IF NOT EXISTS $DATABASE;"
 
 # Create the table Visited_countries
-#mysql -e "USE $DATABASE;"
+mysql -e "USE $DATABASE;"
 mysql -e "CREATE TABLE IF NOT EXISTS Visited_countries (
     country VARCHAR(50),
     nb_visits INT,
@@ -23,6 +24,7 @@ VALUES
     ('USA', 3, '2016-07-01');"
 
 # Create admin user with root privileges
+echo "Creating new users $DB_ADMIN_ID && $DB_ID"
 mysql -e "CREATE USER IF NOT EXISTS '${DB_ADMIN_ID}'@'%' IDENTIFIED BY '${DB_ADMIN_PWD}';"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_ADMIN_ID}'@'%' WITH GRANT OPTION;"
 
