@@ -3,7 +3,7 @@ set -e  # Exit on error
 
 # Start MariaDB service
 service mysql start
-
+sleep 10
 # Wait for 5 seconds to allow the service to start
 # Check if the MariaDB service is running
 if [ ! -d "/var/run/mysqld" ]; then
