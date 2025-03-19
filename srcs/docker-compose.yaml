@@ -10,9 +10,9 @@ services:
     volumes:
       - wordpress-volume:/var/www/cofische
     networks:
-      - inception
-    #expose:
-    #  - 9000
+      - network
+    expose:
+      - 9000
     depends_on:
       - wordpress
   
@@ -24,7 +24,7 @@ services:
     volumes:
       - mariadb-volume:/var/lib/mysql
     networks:
-      - inception
+      - network
     expose:
       - 3306
     restart: on-failure
@@ -36,9 +36,10 @@ services:
     volumes:
       - wordpress-volume:/var/www/cofische    
     networks:
-      - inception
+      - network
     expose:
       - 9000
+      - 3306
     env_file:
       - ./requirements/wordpress/.env_wordpress
     depends_on:
@@ -46,12 +47,8 @@ services:
     restart: on-failure
 
 networks:
-  inception:
+  network:
     driver: bridge
-  #frontend:
-  #  driver: bridge
-  #backend:
-  #  driver: bridge
 
 volumes:
   mariadb-volume:
