@@ -2,12 +2,11 @@
 COMPOSE = docker compose -f srcs/docker-compose.yaml
 PROJECT_NAME = inception
 
-# Default target: Run everything
-all: up
-
 # Build and start the containers
 up:
 	@echo "building containers from $(Project_NAME)"
+	@mkdir -p /home/cofische/data/mariadb
+	@mkdir -p /home/cofische/data/wordpress
 	@$(COMPOSE) -p $(PROJECT_NAME) up --build -d
 
 # Stop and remove the containers
@@ -32,7 +31,8 @@ logs:
 # Clean unused images and containers
 clean:
 	@echo "removing containers' unused images"
-	@docker system prune -af
+	@rm -rf /home/cofische/data/*
+	@docker system prune -a --volumes -f
 
 # Run a shell inside the Nginx container
 sh:
