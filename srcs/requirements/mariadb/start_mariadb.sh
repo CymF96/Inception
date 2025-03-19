@@ -1,15 +1,28 @@
 #!/bin/bash
 set -e  # Exit on error
 
-# Start MySQL service
+# Start MariaDB service
+service mysql start
 
+# Wait for 5 seconds to allow the service to start
+sleep 2
+
+# Check if the MariaDB service is running
+if ! pgrep -x "mysqld" > /dev/null; then
+    echo "MariaDB service has failed to start."
+    # Show the latest logs
+    echo "Showing the last 50 lines of MariaDB log:"
+    tail -n 50 /var/log/mysql/error.log
+else
+    echo "MariaDB service is running."
+	ls -ld /var/run/mysqld
+	ls -ld /var/lib/mysql
+	cat /var/run/mysqld/mysqld.sock
+fi
 
 id mysql
-ls -ld /run
-ls -la /run
-ls -ld /var/lib/mysql
-cat /var/run/mysqld/mysqld.sock
-service mysql start
+
+
 # Create database Travel if not exists
 echo "Creating new database $DATABASE"
 mysql -e "CREATE DATABASE IF NOT EXISTS $DATABASE;"
