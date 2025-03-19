@@ -3,7 +3,7 @@ FROM debian:bookworm
 RUN apt update && apt install -y \
     vim \
     curl \
-    sudo \
+    netcat-openbsd \
     dnsutils \
     php-mysql \
     php-fpm \
