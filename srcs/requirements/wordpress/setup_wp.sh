@@ -19,7 +19,7 @@ else
 	cp $WP_PATH/wp-config-sample.php $WP_PATH/wp-config.php
 
 	# Replace database configuration in wp-config.php
-	sed -i "s/database_name_here/$DB_DATABASE/" $WP_PATH/wp-config.php+
+	sed -i "s/database_name_here/$DB_DATABASE/" $WP_PATH/wp-config.php
 	sed -i "s/username_here/$DB_ADMIN_ID/" $WP_PATH/wp-config.php
 	sed -i "s/password_here/$DB_ADMIN_PWD/" $WP_PATH/wp-config.php
 	sed -i "s/localhost/$DB_HOST/" $WP_PATH/wp-config.php
