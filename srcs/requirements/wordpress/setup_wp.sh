@@ -8,7 +8,7 @@ else
 ####### MANDATORY PART ##########
 
 	#Download wordpress and all config file
-	wget http://wordpress.org/latest.tar.gz
+	curl -LO http://wordpress.org/latest.tar.gz
 	tar xfz latest.tar.gz
 	mv wordpress/* .
 	rm -rf latest.tar.gz
