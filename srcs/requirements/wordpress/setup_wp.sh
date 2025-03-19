@@ -44,7 +44,7 @@ else
 	mv wp-cli.phar /usr/local/bin/wp && wp cli update
 
 	echo "🌐 Setting up WordPress..."
-	sudo -u www-data wp core install --path=$WP_PATH \
+	-u www-data wp core install --path=$WP_PATH \
 	--url="$SITE_URL" \
 	--title="$SITE_TITLE" \
 	--admin_user="$DB_ADMIN_ID" \
