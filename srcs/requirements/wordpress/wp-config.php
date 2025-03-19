@@ -23,16 +23,16 @@
 /**echo 'DATABASE: ' . getenv('DATABASE'); */
 /**echo 'DB_ADMIN_ID: ' . getenv('DB_ADMIN_ID'); */
 /** The name of the database for WordPress */
-define('DB_NAME', getenv('DATABASE'));
+define('DB_NAME', 'Travel');
 
 /** Database username */
-define('DB_USER', 'root');
+define('DB_USER', 'InceptionMaster');
 
 /** Database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'D@ckerDBR%%t2025-');
 
 /** Database hostname */
-define( 'DB_HOST', getenv('DB_HOST'));
+define( 'DB_HOST', 'mariadb:3306');
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
