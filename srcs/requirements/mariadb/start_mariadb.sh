@@ -38,6 +38,6 @@ mysql -e "FLUSH PRIVILEGES;"
 
 echo "Users created successfully and MySQL service restart"
 
-exec$@
+exec "$@"
 
 
