@@ -39,7 +39,7 @@ services:
     expose:
       - 9000
     env_file:
-      - /.secrets/.env_wordpress
+      - /.secrets/.env_global
     depends_on:
       - mariadb
     restart: on-failure
