@@ -35,6 +35,7 @@ mysqladmin -u root -p$DB_ROOT_PWD shutdown
 
 echo "Users created successfully and MySQL service restart"
 
+# Executing CMD from Dockerfile after ending the script
 exec "$@"
 
 

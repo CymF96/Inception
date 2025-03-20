@@ -1,5 +1,6 @@
 FROM debian:bookworm
 
+# Download useful package + php-fpm 
 RUN apt update && apt install -y \
     vim \
     curl \
@@ -22,8 +23,11 @@ COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
 COPY setup_wp.sh /tmp/setup_wp.sh
 RUN chmod +x /tmp/setup_wp.sh
 
+# Exposing 9000 port for docker-network communication
 EXPOSE 9000
 
+# Command to execute when starting container
 ENTRYPOINT ["/tmp/setup_wp.sh"]
 
+# Command to execute after script -- starting php service
 CMD ["/usr/sbin/php-fpm8.2", "-F"]
