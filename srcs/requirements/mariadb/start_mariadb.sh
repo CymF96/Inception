@@ -5,6 +5,14 @@ set -e  # Exit on error
 service mariadb start
 sleep 10
 
+# Create admin user with root privileges
+echo "Creating new users $DB_ADMIN_ID && $DB_ID"
+mariadb -e "CREATE USER IF NOT EXISTS '${DB_ID}'@'%' IDENTIFIED BY '${DB_PWD}';"
+mariadb -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_ID}'@'%' WITH GRANT OPTION;"
+mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '${DB_ROOT_PWD}';"
+mariadb -e "FLUSH PRIVILEGES;"
+mariadb -u root --skip-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PWD}';"
+
 # Create database Travel if not exists
 echo "Creating new database $DATABASE"
 mariadb -e "CREATE DATABASE IF NOT EXISTS $DATABASE;"
@@ -24,13 +32,6 @@ VALUES
     ('Japan', 1, '2019-09-15'),
     ('USA', 3, '2016-07-01');"
 
-# Create admin user with root privileges
-echo "Creating new users $DB_ADMIN_ID && $DB_ID"
-mariadb -e "CREATE USER IF NOT EXISTS '${DB_ID}'@'%' IDENTIFIED BY '${DB_PWD}';"
-mariadb -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_ID}'@'%' WITH GRANT OPTION;"
-mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '${DB_ROOT_PWD}';"
-mariadb -e "FLUSH PRIVILEGES;"
-mariadb -u root --skip-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PWD}';"
 mysqladmin -u root -p$DB_ROOT_PWD shutdown
 
 echo "Users created successfully and mariadb service restart"
