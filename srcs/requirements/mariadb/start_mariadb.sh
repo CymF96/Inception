@@ -2,6 +2,7 @@
 set -e  # Exit on error
 
 # Start MariaDB service
+sleep 10
 service mysql start
 sleep 10
 
