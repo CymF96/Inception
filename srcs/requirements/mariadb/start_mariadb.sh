@@ -2,7 +2,7 @@
 set -e  # Exit on error
 
 # Start MariaDB service
-service mariadb start
+service mysql start
 sleep 10
 
 # Create database Travel if not exists
