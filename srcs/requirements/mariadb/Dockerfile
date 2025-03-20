@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 # installaing useful packages + mariadb
 RUN apt-get update -y && apt-get install -y \
