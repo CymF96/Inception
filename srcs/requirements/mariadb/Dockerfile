@@ -13,7 +13,7 @@ COPY start_mariadb.sh /tmp/start_mariadb.sh
 RUN  chmod +x /tmp/start_mariadb.sh
 
 # Replace all localhost ip to none in mariadb server config file so it can listen to client request on server
-#RUN sed -i "s/127.0.0.1/0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf 
+RUN sed -i "s/127.0.0.1/0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf 
 
 EXPOSE "3306"
 
