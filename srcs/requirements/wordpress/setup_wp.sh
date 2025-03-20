@@ -6,7 +6,7 @@ then
 else
 
 	mkdir -p $WP_PATH
-
+	echo "creating directory for wordpress at $WP_PATH"
 	curl -L https://wordpress.org/latest.tar.gz -o /tmp/wordpress.tar.gz
 	tar -xzf /tmp/wordpress.tar.gz -C /tmp
 	cp -r /tmp/wordpress/* $WP_PATH && rm -rf /tmp/wordpress
