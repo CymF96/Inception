@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 #downloading usefull package + nginx + openssl for protocol certificate
 RUN apt update && apt install -y \

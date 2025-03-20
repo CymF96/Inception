@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 # Download useful package + php-fpm 
 RUN apt update && apt install -y \
