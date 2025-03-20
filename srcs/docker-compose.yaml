@@ -4,14 +4,13 @@ services:
     image: nginx
     container_name: nginx
     env_file: 
-      - .env
+      - /.secrets/.env_global
     ports:
       - 443:443
     volumes:
       - wordpress-volume:/var/www/wordpress
     networks:
       - inception
-
     depends_on:
       - wordpress
   
@@ -19,7 +18,7 @@ services:
     build: ./requirements/mariadb
     image: mariadb
     container_name: mariadb
-    env_file: .env
+    env_file: /.secrets/.env_global
     volumes:
       - mariadb-volume:/var/lib/mysql
     networks:
@@ -39,7 +38,7 @@ services:
     expose:
       - 9000
     env_file:
-      - ./requirements/wordpress/.env_wordpress
+      - /.secrets/.env_wordpress
     depends_on:
       - mariadb
     restart: on-failure
