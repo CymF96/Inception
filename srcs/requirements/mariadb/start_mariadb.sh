@@ -2,7 +2,7 @@
 set -e  # Exit on error
 
 # Start MariaDB service
-if [-f /var/lib/mysql/$DATABASE]; then
+if [ -f /var/lib/mysql/$DATABASE ]; then
     echo "mariadb already installed"
 else
     service mariadb start
