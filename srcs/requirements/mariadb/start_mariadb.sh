@@ -37,7 +37,6 @@ mariadb -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_ID}'@'%' WITH GRANT OPTION;"
 mariadb -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '${DB_ROOT_PWD}';"
 mariadb -e "FLUSH PRIVILEGES;"
 mariadb -u root --skip-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PWD}';"
-mariadbadmin -u root -p$DB_ROOT_PWD shutdown
 
 echo "Users created successfully and mariadb service restart"
 
