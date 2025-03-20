@@ -2,8 +2,8 @@
 set -e  # Exit on error
 
 # Start MariaDB service
-service mariadb start
-sleep 5
+#service mariadb start
+#sleep 5
 
 # Setting up mariadb
 echo -e "\nY\n$DB_ROOT_PWD\n$DB_ROOT_PWD\nY\nY\nY\nY" | mariadb-secure-installation
