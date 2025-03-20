@@ -12,7 +12,7 @@ else
     echo "setting up mariadb..."
     echo -e "\nY\n$DB_ROOT_PWD\n$DB_ROOT_PWD\nY\nY\nY\nY" | mariadb-secure-installation
     echo "restarting mariadb..."
-    service mariadb start
+    service mariadb restart
     sleep 5
 
     # Create database Travel if not exists
