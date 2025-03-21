@@ -5,6 +5,7 @@ RUN apt-get update -y && apt-get install -y \
 mariadb-server \
 mariadb-client \
 iproute2 \
+net-tools \
 iputils-ping \
 vim \
 sudo \

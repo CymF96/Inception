@@ -5,6 +5,7 @@ RUN apt update && apt install -y \
     vim \
     curl \
     netcat-openbsd \
+    net-tools \
     dnsutils \
     iproute2 \
     iputils-ping \
