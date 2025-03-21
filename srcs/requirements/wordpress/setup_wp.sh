@@ -27,6 +27,27 @@ else
 	sed -i "s/password_here/$DB_PWD/" $WP_PATH/wp-config.php
 	sed -i "s/localhost/$DB_HOST/" $WP_PATH/wp-config.php
 
+	# Generate auth keys
+	echo "Generating security keys..."
+	curl -s https://api.wordpress.org/secret-key/1.1/salt/ > /tmp/wp-keys.txt
+	line1=$(head -n 1 /tmp/wp-keys.txt)
+	line2=$(head -n 2 /tmp/wp-keys.txt)
+	line3=$(head -n 3 /tmp/wp-keys.txt)
+	line4=$(head -n 4 /tmp/wp-keys.txt)
+	line5=$(head -n 5 /tmp/wp-keys.txt)
+	line6=$(head -n 6 /tmp/wp-keys.txt)
+	line7=$(head -n 7 /tmp/wp-keys.txt)
+	line8=$(head -n 8 /tmp/wp-keys.txt)
+	sed -i "/'AUTH_KEY'/c\\$line1" $WP_PATH/wp-config.php
+	sed -i "/'SECURE_AUTH_KEY'/c\\$line2" $WP_PATH/wp-config.php
+	sed -i "/'LOGGED_IN_KEY'/c\\$line3" $WP_PATH/wp-config.php
+	sed -i "/'NONCE_KEY'/c\\$line4" $WP_PATH/wp-config.php
+	sed -i "/'AUTH_SALT'/c\\$line5" $WP_PATH/wp-config.php
+	sed -i "/'SECURE_AUTH_SALT'/c\\$line6" $WP_PATH/wp-config.php
+	sed -i "/'LOGGED_IN_SALT'/c\\$line7" $WP_PATH/wp-config.php
+	sed -i "/'NONCE_SALT'/c\\$line8" $WP_PATH/wp-config.php
+	rm /tmp/wp-keys.tx
+
 	# Installing CLI for Wordpress admin installation
 	echo "Installing WordPress CLI..."
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
