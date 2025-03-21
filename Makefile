@@ -34,18 +34,18 @@ logs:
     @$(COMPOSE) -p $(PROJECT_NAME) logs -f
 
 # Build individual container
-up nginx:
+nginx_up:
     @echo "building nginx"
 	@mkdir -p /home/cofische/data/wordpress
 	@mkdir -p /home/cofische/data/wordpress
     @$(COMPOSE) up --build nginx
 
-up db:
+db_ep:
     @echo "building mariadb"
 	@mkdir -p /home/cofische/data/mariadb
     @$(COMPOSE) up --build mariadb
 
-up wp:
+wp_up:
     @echo "building wordpress"
 	@mkdir -p /home/cofische/data/wordpress
 	@mkdir -p /home/cofische/data/wordpress
