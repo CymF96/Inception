@@ -12,12 +12,12 @@ up:
 # Stop and remove the containers
 stop:
 	@echo "stopping containers from $(PROJECT_NAME)"
-	@$(COMPOSE) -p $(PROJECT_NAME) stop
+	@docker stop $(docker ps -aq)
 
 # Stop and remove the containers and volumes
-down:
+remove:
 	@echo "stopping containers and removing volumes from $(PROJECT_NAME)"
-	@$(COMPOSE) -p $(PROJECT_NAME) down --volumes
+	@docker remove $(docker ps -aq)
 
 # Restart the services
 restart: down up
@@ -34,18 +34,18 @@ logs:
 	@$(COMPOSE) -p $(PROJECT_NAME) logs -f
 
 # Build individual container
-nginx_up:
+up-nginx:
 	@echo "building nginx"
 	@mkdir -p /home/cofische/data/wordpress
 	@mkdir -p /home/cofische/data/wordpress
 	@$(COMPOSE) up --build nginx
 
-db_ep:
+up-db:
 	@echo "building mariadb"
 	@mkdir -p /home/cofische/data/mariadb
 	@$(COMPOSE) up --build mariadb
 
-wp_up:
+up-wp:
 	@echo "building wordpress"
 	@mkdir -p /home/cofische/data/wordpress
 	@mkdir -p /home/cofische/data/wordpress
@@ -65,13 +65,12 @@ sh-wp:
 	@docker exec -it wordpress bash
 
 # Clean unused images and containers
-clean:
+clean: stop remove
 	@echo "removing containers from $(PROJECT_NAME)"
-	@$(COMPOSE) -p $(PROJECT_NAME) down --volumes
 
 fclean: clean
 	@echo "removing containers' unused images and cleaning volumes"
 	@rm -rf "/home/cofische/data/*"
 	@docker system prune -a --volumes -f
 
-.PHONY: up down stop restart ps logs up-nginx up-db up-wp sh-nginx sh-db sh-wp clean fclean
+.PHONY: up remove stop restart ps logs up-nginx up-db up-wp sh-nginx sh-db sh-wp clean fclean
