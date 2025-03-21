@@ -38,16 +38,14 @@ else
 	line6=$(sed -n '6p' /tmp/wp-keys.txt)
 	line7=$(sed -n '7p' /tmp/wp-keys.txt)
 	line8=$(sed -n '8p' /tmp/wp-keys.txt)
-	awk -v line="$line1" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	#awk -v line="$line2" '/\'SECURE_AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	sed -i "51c\\$line1" $WP_PATH/wp-config.php
 	sed -i "52c\\$line2" $WP_PATH/wp-config.php
-	awk -v line="$line3" '/\'LOGGED_IN_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line4" '/\'NONCE_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line5" '/\'AUTH_SALT\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	#awk -v line="$line6" '/\'SECURE_AUTH_SALT\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	sed -i "56c\\$line2" $WP_PATH/wp-config.php
-	awk -v line="$line7" '/\'LOGGED_IN_SALT\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line8" '/\'_SALT\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	sed -i "53c\\$line3" $WP_PATH/wp-config.php
+	sed -i "54c\\$line4" $WP_PATH/wp-config.php
+	sed -i "55c\\$line5" $WP_PATH/wp-config.php
+	sed -i "56c\\$line6" $WP_PATH/wp-config.php
+	sed -i "57c\\$line7" $WP_PATH/wp-config.php
+	sed -i "58c\\$line8" $WP_PATH/wp-config.php
 	rm /tmp/wp-keys.tx
 
 	# Installing CLI for Wordpress admin installation
