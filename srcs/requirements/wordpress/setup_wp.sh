@@ -57,11 +57,8 @@ else
 
 	#checking mariadb has finished setup and listening on expose port 3306
 	nc -z "$DB_HOST" 3306;
-
-	until nc -z "$DB_HOST" 3306; do
-		echo "Waiting..."
-		sleep 2
-	done
+	echo "Waiting..."
+	sleep 2
 
 	# setting wordpress admin page
 	echo "Setting up WordPress..."
