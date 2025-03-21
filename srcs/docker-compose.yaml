@@ -40,8 +40,8 @@ services:
       - 9000
     env_file:
       - /.secrets/.env_global
-    depends_on:
-      - mariadb
+    #depends_on:
+    #  - mariadb
     restart: on-failure
 
 networks:
