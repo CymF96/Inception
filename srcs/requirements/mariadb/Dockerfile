@@ -4,6 +4,8 @@ FROM debian:bullseye
 RUN apt-get update -y && apt-get install -y \
 mariadb-server \
 mariadb-client \
+iproute2 \
+iputils-ping \
 vim \
 sudo \
 curl \

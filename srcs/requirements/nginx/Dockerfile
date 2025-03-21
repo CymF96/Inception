@@ -4,6 +4,8 @@ FROM debian:bullseye
 RUN apt update && apt install -y \
 nginx \
 curl \
+iproute2 \
+iputils-ping \
 vim \
 dnsutils \
 openssl 

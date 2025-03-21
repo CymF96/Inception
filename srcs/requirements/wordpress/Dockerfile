@@ -6,6 +6,8 @@ RUN apt update && apt install -y \
     curl \
     netcat-openbsd \
     dnsutils \
+    iproute2 \
+    iputils-ping \
     php-mysql \
     php-fpm \
     php-curl \
