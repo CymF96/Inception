@@ -23,8 +23,8 @@ else
 
 	# Replace database configuration in wp-config.php
 	sed -i "s/database_name_here/$DATABASE/" $WP_PATH/wp-config.php
-	sed -i "s/username_here/$DB_ID/" $WP_PATH/wp-config.php
-	sed -i "s/password_here/$DB_PWD/" $WP_PATH/wp-config.php
+	sed -i "s/username_here/$DB_ADMIN_ID/" $WP_PATH/wp-config.php
+	sed -i "s/password_here/$DB_ADMIN_PWD/" $WP_PATH/wp-config.php
 	sed -i "s/localhost/$DB_HOST/" $WP_PATH/wp-config.php
 
 	# Generate auth keys
@@ -39,13 +39,13 @@ else
 	line7=$(sed -n '7p' /tmp/wp-keys.txt)
 	line8=$(sed -n '8p' /tmp/wp-keys.txt)
 	awk -v line="$line1" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line2" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line3" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line4" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line5" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line6" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line7" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
-	awk -v line="$line8" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	awk -v line="$line2" '/\'SECURE_AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	awk -v line="$line3" '/\'LOGGED_IN_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	awk -v line="$line4" '/\'NONCE_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	awk -v line="$line5" '/\'AUTH_SALT\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	awk -v line="$line6" '/\'SECURE_AUTH_SALT\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	awk -v line="$line7" '/\'LOGGED_IN_SALT\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	awk -v line="$line8" '/\'NONCE_SALT\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
 	rm /tmp/wp-keys.tx
 
 	# Installing CLI for Wordpress admin installation
@@ -56,7 +56,8 @@ else
 
 	#checking mariadb has finished setup and listening on expose port 3306
 	until nc -z "$DB_HOST" 3306; do
-		sleep 5
+		echo "Waiting..."
+		sleep 2
 	done
 
 	# setting wordpress admin page
@@ -66,7 +67,7 @@ else
     --title='$SITE_TITLE' \
     --admin_user='$DB_ADMIN_ID' \
     --admin_password='$DB_ADMIN_PWD' \
-    --admin_email='admin@example.com'"
+    --admin_email='$ADMIN_EMAIL'"
 
 	echo "WordPress installation completed!"
 
