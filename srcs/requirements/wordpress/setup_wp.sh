@@ -30,15 +30,16 @@ else
 	# Generate auth keys
 	echo "Generating security keys..."
 	curl -s https://api.wordpress.org/secret-key/1.1/salt/ > /tmp/wp-keys.txt
-	line1=$(head -n 1 /tmp/wp-keys.txt)
-	line2=$(head -n 2 /tmp/wp-keys.txt)
-	line3=$(head -n 3 /tmp/wp-keys.txt)
-	line4=$(head -n 4 /tmp/wp-keys.txt)
-	line5=$(head -n 5 /tmp/wp-keys.txt)
-	line6=$(head -n 6 /tmp/wp-keys.txt)
-	line7=$(head -n 7 /tmp/wp-keys.txt)
-	line8=$(head -n 8 /tmp/wp-keys.txt)
-	sed -i "/'AUTH_KEY'/c\\$line1" $WP_PATH/wp-config.php
+	line1=$(sed -n '1p' /tmp/wp-keys.txt)
+	line2=$(sed -n '2p' /tmp/wp-keys.txt)
+	line3=$(sed -n '3p' /tmp/wp-keys.txt)
+	line4=$(sed -n '4p' /tmp/wp-keys.txt)
+	line5=$(sed -n '5p' /tmp/wp-keys.txt)
+	line6=$(sed -n '6p' /tmp/wp-keys.txt)
+	line7=$(sed -n '7p' /tmp/wp-keys.txt)
+	line8=$(sed -n '8p' /tmp/wp-keys.txt)
+	awk -v line="$line1" '/\'AUTH_KEY\'/' {$0 = line} 1' "$WP_PATH/wp-config.php" > temp && mv temp "$WP_PATH/wp-config.php"
+	sed -n "/'AUTH_KEY'/p" $WP_PATH/wp-config.php
 	sed -i "/'SECURE_AUTH_KEY'/c\\$line2" $WP_PATH/wp-config.php
 	sed -i "/'LOGGED_IN_KEY'/c\\$line3" $WP_PATH/wp-config.php
 	sed -i "/'NONCE_KEY'/c\\$line4" $WP_PATH/wp-config.php
