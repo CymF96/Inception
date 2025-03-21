@@ -10,9 +10,9 @@ up:
 	@$(COMPOSE) -p $(PROJECT_NAME) up --build -d
 
 # Stop and remove the containers
-down:
-	@echo "removing containers from $(Project_NAME)"
-	@$(COMPOSE) -p $(PROJECT_NAME) down
+stop:
+	@echo "stopping containers from $(Project_NAME)"
+	@$(COMPOSE) -p $(PROJECT_NAME) stop
 
 # Restart the services
 restart: down up
@@ -28,13 +28,28 @@ logs:
 	@echo "showing containers' logs"
 	@$(COMPOSE) -p $(PROJECT_NAME) logs -f
 
+# Run a shell inside the Nginx container
+sh-nginx:
+	@echo "accessing nginx"
+	@docker exec -it nginx bash
+
+sh-db:
+	@echo "accessing mariadb"
+	@docker exec -it mariadb bash
+
+sh-wp:
+	@echo "accessing wordpress"
+	@docker exec -it wordpress bash
+
 # Clean unused images and containers
 clean:
-	@echo "removing containers' unused images"
+	@echo "removing containers from $(Project_NAME)"
+	@$(COMPOSE) -p $(PROJECT_NAME) down
+
+fclean: clean
+	@echo "removing containers' unused images and cleaning volumes"
 	@rm -rf /home/cofische/data/*
 	@docker system prune -a --volumes -f
 
-# Run a shell inside the Nginx container
-sh:
-	@docker exec -it nginx sh
+
 
