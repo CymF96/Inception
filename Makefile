@@ -51,5 +51,4 @@ fclean: clean
 	@rm -rf /home/cofische/data/*
 	@docker system prune -a --volumes -f
 
-
-
+.PHONY: up down stop restart ps logs sh-nginx sh-db sh-wp clean fclean
