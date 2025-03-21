@@ -39,6 +39,7 @@ else
     # Create admin user with root privileges
     echo "Creating new users $DB_ADMIN_ID && $DB_ID"
     mariadb -e "CREATE USER IF NOT EXISTS '${DB_ADMIN_ID}'@'%' IDENTIFIED BY '${DB_ADMIN_PWD}';"
+    echo $DB_ADMIN_PWD
     mariadb -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_ADMIN_ID}'@'%' WITH GRANT OPTION;"
     mariadb -e "CREATE USER IF NOT EXISTS '${DB_ID}'@'%' IDENTIFIED BY '${DB_PWD}';"
     mariadb -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_ID}'@'%' WITH GRANT OPTION;"
