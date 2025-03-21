@@ -28,6 +28,19 @@ logs:
 	@echo "showing containers' logs"
 	@$(COMPOSE) -p $(PROJECT_NAME) logs -f
 
+# Build individual container
+up-nginx:
+	@echo "building nginx"
+	@$(COMPOSE) up --build nginx
+
+up-db:
+	@echo "building mariadb"
+	@$(COMPOSE) up --build mariadb
+
+up-wp:
+	@echo "building wordpress"
+	@$(COMPOSE) up --build wordpress
+
 # Run a shell inside the Nginx container
 sh-nginx:
 	@echo "accessing nginx"
@@ -51,4 +64,4 @@ fclean: clean
 	@rm -rf /home/cofische/data/*
 	@docker system prune -a --volumes -f
 
-.PHONY: up down stop restart ps logs sh-nginx sh-db sh-wp clean fclean
+.PHONY: up down stop restart ps logs upnginx up-db up-wp sh-nginx sh-db sh-wp clean fclean 
