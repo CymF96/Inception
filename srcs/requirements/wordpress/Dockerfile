@@ -23,6 +23,7 @@ RUN apt update && apt install -y \
 
 # Copy WordPress files into the working directory
 COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
+COPY test-db.php /tmp/test-db.php
 COPY setup_wp.sh /tmp/setup_wp.sh
 RUN chmod +x /tmp/setup_wp.sh
 

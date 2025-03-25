@@ -13,10 +13,19 @@ else
 	tar -xzf /tmp/wordpress.tar.gz -C /tmp
 	cp -r /tmp/wordpress/* $WP_PATH && rm -rf /tmp/wordpress
 
+	# Adding test-db.php to the correct folder
+	mv /tmp/test-db.php /var/www/wordpress/test-db.php
+
 	#setting permission to www-data for nginx and wordpress share volume
 	echo "Setting permissions..."
 	chown -R www-data:www-data $WP_PATH
 	chmod -R 755 $WP_PATH
+
+	# Replace database configuration in test-db.php
+	sed -i "s/database_name_here/$DATABASE/" $WP_PATH/test-db.php
+	sed -i "s/username_here/$DB_ADMIN_ID/" $WP_PATH/test-db.php
+	sed -i "s/password_here/$DB_ADMIN_PWD/" $WP_PATH/test-db.php
+	sed -i "s/localhost/$DB_HOST/" $WP_PATH/test-db.php
 
 	echo "Configuring WordPress..."
 	cp $WP_PATH/wp-config-sample.php $WP_PATH/wp-config.php
