@@ -25,7 +25,6 @@ else
 	sed -i "s/database_name_here/$DATABASE/" $WP_PATH/wp-config.php
 	sed -i "s/username_here/$DB_ADMIN_ID/" $WP_PATH/wp-config.php
 	sed -i "s/password_here/$DB_ADMIN_PWD/" $WP_PATH/wp-config.php
-	echo $DB_ADMIN_PWD
 	sed -i "s/localhost/$DB_HOST/" $WP_PATH/wp-config.php
 
 	# Generate auth keys
@@ -47,7 +46,7 @@ else
 	sed -i "56c\\$line6" $WP_PATH/wp-config.php
 	sed -i "57c\\$line7" $WP_PATH/wp-config.php
 	sed -i "58c\\$line8" $WP_PATH/wp-config.php
-	rm /tmp/wp-keys.tx
+	rm /tmp/wp-keys.txt
 
 	# Installing CLI for Wordpress admin installation
 	echo "Installing WordPress CLI..."
