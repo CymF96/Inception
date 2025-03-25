@@ -55,10 +55,13 @@ else
 	mv wp-cli.phar /usr/local/bin/wp
 
 	#checking mariadb has finished setup and listening on expose port 3306
-	nc -z "$DB_HOST" 3306;
-	echo "Waiting..."
-	sleep 2
-
+	echo "Waiting for database..."
+	until nc -z "$DB_HOST" 3306; do
+		echo "Database not ready yet... waiting"
+		sleep 2
+	done
+	echo "Database is ready!"
+	
 	# setting wordpress admin page
 	echo "Setting up WordPress..."
 	su -s /bin/bash www-data -c "wp core install --path=$WP_PATH \
