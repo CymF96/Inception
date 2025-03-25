@@ -65,15 +65,15 @@ else
 	# setting wordpress admin page
 	echo "Setting up WordPress..."
 	su -s /bin/bash www-data -c "wp core install --path=$WP_PATH \
-    --url='$SITE_URL' \
-    --title='$SITE_TITLE' \
-    --admin_user='$WP_ADMIN_ID' \
-    --admin_password='$WP_ADMIN_PWD' \
-    --admin_email='$ADMIN_EMAIL' \
-    --dbuser='$DB_ADMIN_ID' \
-    --dbpass='$DB_ADMIN_PWD' \
-    --dbhost='$DB_HOST' \
-    --dbname='$DATABASE'"
+	--url='$SITE_URL' \
+	--title='$SITE_TITLE' \
+	--admin_user='$WP_ADMIN_ID' \
+	--admin_password='$WP_ADMIN_PWD' \
+	--admin_email='$ADMIN_EMAIL'"
+	#--dbuser='$DB_ADMIN_ID' \
+	#--dbpass='$DB_ADMIN_PWD' \
+	#--dbhost='$DB_HOST' \
+	#--dbname='$DATABASE'"
 
 	echo "WordPress installation completed!"
 
