@@ -70,10 +70,6 @@ else
 	--admin_user='$WP_ADMIN_ID' \
 	--admin_password='$WP_ADMIN_PWD' \
 	--admin_email='$ADMIN_EMAIL'"
-	#--dbuser='$DB_ADMIN_ID' \
-	#--dbpass='$DB_ADMIN_PWD' \
-	#--dbhost='$DB_HOST' \
-	#--dbname='$DATABASE'"
 
 	echo "WordPress installation completed!"
 

@@ -18,8 +18,10 @@ RUN sed -i "s/127.0.0.1/0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
 # Create directory for MySQL socket and data
 RUN mkdir -p /var/run/mysqld && \
     chown -R mysql:mysql /var/run/mysqld && \
+	chmod -R 777 /var/run/mysqld && \
     mkdir -p /var/lib/mysql && \
-    chown -R mysql:mysql /var/lib/mysql
+    chown -R mysql:mysql /var/lib/mysql && \
+	chmod -R 777 /var/lib/mysql
 
 # Copying mariadb_launcher script and giving permisison to execute
 COPY start_mariadb.sh /tmp/start_mariadb.sh
