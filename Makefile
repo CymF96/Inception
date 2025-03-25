@@ -12,12 +12,12 @@ up:
 # Stop and remove the containers
 stop:
 	@echo "stopping containers from $(PROJECT_NAME)"
-	@docker stop $(docker ps -a -q)
+	@docker stop $$(docker ps -a -q)
 
 # Stop and remove the containers and volumes
 remove:
 	@echo "stopping containers and removing volumes from $(PROJECT_NAME)"
-	@docker remove $(docker ps -a -q)
+	@docker remove $$(docker ps -a -q)
 
 # Restart the services
 restart: down up
