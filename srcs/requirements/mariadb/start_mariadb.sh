@@ -61,7 +61,7 @@ EOF
 	echo "Users created successfully and mariadb service restart"
 	
 	# Shutdown the temporary instance
-	mysqladmin shutdown
+	mysqladmin -u root -p"$DB_ROOT_PWD" shutdown
 fi
 
 # Executing CMD from Dockerfile after ending the script
