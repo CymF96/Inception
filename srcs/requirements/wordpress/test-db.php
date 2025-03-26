@@ -10,49 +10,34 @@ $conn = new mysqli($host, $user, $password, $database);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+	die("Connection failed: " . $conn->connect_error);
 }
 
 echo "<h1>Database Connection Successful!</h1>";
 
 // Get WordPress tables
-$result = $conn->query("SHOW TABLES");
-
-if ($result->num_rows > 0) {
-    echo "<h2>WordPress Tables:</h2>";
-    echo "<ul>";
-    while($row = $result->fetch_row()) {
-        echo "<li>" . $row[0] . "</li>";
-    }
-    echo "</ul>";
-    
-    // Show visited countries
-    // This assumes you have a table named 'visited_countries' with columns 'id', 'country_name', and 'visit_date'
-    // You'll need to adjust this query based on your actual table structure
-    $countries = $conn->query("SELECT id, country_name, visit_date, notes FROM visited_countries ORDER BY visit_date DESC");
-    
-    if ($countries && $countries->num_rows > 0) {
-        echo "<h2>Visited Countries:</h2>";
-        echo "<table border='1'>";
-        echo "<tr><th>ID</th><th>Country</th><th>Visit Date</th><th>Notes</th></tr>";
-        while($country = $countries->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $country["id"] . "</td>";
-            echo "<td>" . htmlspecialchars($country["country_name"]) . "</td>";
-            echo "<td>" . $country["visit_date"] . "</td>";
-            echo "<td>" . htmlspecialchars($country["notes"]) . "</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "<h2>No visited countries found in database.</h2>";
-        echo "SQL Error: " . $conn->error;
-    }
+// Show visited countries
+$countries = $conn->query("SELECT country, nb_visits, last_visited FROM Visited_countries ORDER BY last_visited DESC");
+	
+if ($countries && $countries->num_rows > 0) {
+		echo "<h2>Visited Countries:</h2>";
+		echo "<table border='1'>";
+		echo "<tr><th>Country</th><th>Nomber of Visit</th><th>Visit Date</th><th>";
+		while($country = $countries->fetch_assoc()) {
+			echo "<tr>";
+			echo "<td>" . htmlspecialchars($country["country"]) . "</td>";
+			echo "<td>" . $country["nb_visits"] . "</td>";
+			echo "<td>" . $country["last_visited"] . "</td>";
+			echo "</tr>";
+		}
+		echo "</table>";
 } else {
-    echo "No tables found in database.";
+	echo "<h2>No visited countries found in database.</h2>";
+	echo "SQL Error: " . $conn->error;
 }
+
+$conn->close();
 
 echo "<p><a href='tanzania/homepage.html'>Visit Our Homepage</a></p>";
 
-$conn->close();
 ?>
