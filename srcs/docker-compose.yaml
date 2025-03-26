@@ -44,6 +44,21 @@ services:
       - mariadb
     restart: on-failure
 
+  ftp-server:
+    build: ./requirements/bonus/ftp-server
+    image: ftp-server
+    container_name: ftp_server
+    volumes:
+      - ftp-volume:/var/vsftpd
+    networks:
+      - inception
+    env_file:
+      - /.secrets/.env_global
+    ports:
+      - "21:21"
+      - "2010-2020:2010:2020"
+    restart: on-failure
+
 networks:
   inception:
     driver: bridge
@@ -59,4 +74,10 @@ volumes:
     driver_opts:
       type: none
       device: /home/cofische/data/wordpress
+      o: bind
+  ftp-volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/cofische/data/ftp
       o: bind

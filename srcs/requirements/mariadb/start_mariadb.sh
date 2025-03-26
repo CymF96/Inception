@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e  # Exit on error
 
 # Start MariaDB service
 if [ -d /var/lib/mysql/$DATABASE ]; then
