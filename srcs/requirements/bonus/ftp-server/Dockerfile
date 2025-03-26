@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
 vim \
 net-tools \
 iproute2 \
