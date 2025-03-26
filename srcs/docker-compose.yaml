@@ -47,7 +47,7 @@ services:
   ftp-server:
     build: ./requirements/bonus/ftp-server
     image: ftp-server
-    container_name: ftp_server
+    container_name: ftp-server
     volumes:
       - ftp-volume:/var/vsftpd
     networks:
