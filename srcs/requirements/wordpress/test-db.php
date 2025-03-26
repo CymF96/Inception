@@ -26,25 +26,33 @@ if ($result->num_rows > 0) {
     }
     echo "</ul>";
     
-    // Show posts example
-    $posts = $conn->query("SELECT ID, post_title, post_date FROM wp_posts WHERE post_status='publish' LIMIT 10");
+    // Show visited countries
+    // This assumes you have a table named 'visited_countries' with columns 'id', 'country_name', and 'visit_date'
+    // You'll need to adjust this query based on your actual table structure
+    $countries = $conn->query("SELECT id, country_name, visit_date, notes FROM visited_countries ORDER BY visit_date DESC");
     
-    if ($posts->num_rows > 0) {
-        echo "<h2>Recent Posts:</h2>";
+    if ($countries && $countries->num_rows > 0) {
+        echo "<h2>Visited Countries:</h2>";
         echo "<table border='1'>";
-        echo "<tr><th>ID</th><th>Title</th><th>Date</th></tr>";
-        while($post = $posts->fetch_assoc()) {
+        echo "<tr><th>ID</th><th>Country</th><th>Visit Date</th><th>Notes</th></tr>";
+        while($country = $countries->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $post["ID"] . "</td>";
-            echo "<td>" . htmlspecialchars($post["post_title"]) . "</td>";
-            echo "<td>" . $post["post_date"] . "</td>";
+            echo "<td>" . $country["id"] . "</td>";
+            echo "<td>" . htmlspecialchars($country["country_name"]) . "</td>";
+            echo "<td>" . $country["visit_date"] . "</td>";
+            echo "<td>" . htmlspecialchars($country["notes"]) . "</td>";
             echo "</tr>";
         }
         echo "</table>";
+    } else {
+        echo "<h2>No visited countries found in database.</h2>";
+        echo "SQL Error: " . $conn->error;
     }
 } else {
     echo "No tables found in database.";
 }
+
+echo "<p><a href='tanzania/homepage.html'>Visit Our Homepage</a></p>";
 
 $conn->close();
 ?>

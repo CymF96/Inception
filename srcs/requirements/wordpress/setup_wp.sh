@@ -15,6 +15,7 @@ else
 
 	# Adding test-db.php to the correct folder
 	mv /tmp/test-db.php /var/www/wordpress/test-db.php
+	mv /tmp/tanzania /var/www/wordpress/
 
 	#setting permission to www-data for nginx and wordpress share volume
 	echo "Setting permissions..."

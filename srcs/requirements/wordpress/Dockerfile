@@ -27,6 +27,8 @@ COPY test-db.php /tmp/test-db.php
 COPY setup_wp.sh /tmp/setup_wp.sh
 RUN chmod +x /tmp/setup_wp.sh
 
+COPY tanzania/ /tmp/tanzania 
+
 # Exposing 9000 port for docker-network communication
 EXPOSE 9000
 
