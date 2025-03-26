@@ -56,7 +56,7 @@ services:
       - /.secrets/.env_global
     ports:
       - "21:21"
-      - "2010-2020:2010:2020"
+      - "21100-21200:21100:21200"
     restart: on-failure
 
 networks:
