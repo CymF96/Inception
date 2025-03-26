@@ -4,7 +4,7 @@ if [ ! -f /etc/vsftpd/vsftpd.conf ]; then
 
 	mv /tmp/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
-	adduser --gecos "" --disabled-password $TP_USER
+	adduser --gecos "" --disabled-password $FTP_USER
 	echo "$FTP_USER":"$FTP_USER_PWD" | chpasswd
 	mkdir -p $FTP_DIR
 	chown -R $FTP_USER $FTP_DIR
