@@ -18,7 +18,8 @@ RUN openssl req \
 -days 365 \
 -newkey rsa:1024 \
 -keyout /etc/ssl/private/vsftpd.pem \
--out /etc/ssl/private/vsftpd.pem
+-out /etc/ssl/private/vsftpd.pem \
+-subj "/C=UK/ST=ENGLAND/L=LONDON/O=42/OU=INCEPTION/CN=cofische.42.fr"
 
 RUN rm -f /etc/vsftpd.conf
 COPY vsftpd.conf /tmp/vsftpd.conf
