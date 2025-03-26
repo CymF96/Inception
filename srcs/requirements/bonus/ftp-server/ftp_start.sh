@@ -1,6 +1,6 @@
 #!bin/bash
 
-if [ ! -f /etc/vsftpd/vsftpd.conf]; then
+if [ ! -f /etc/vsftpd/vsftpd.conf ]; then
 
 	mv /tmp/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
