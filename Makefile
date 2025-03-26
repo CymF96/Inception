@@ -7,6 +7,7 @@ up:
 	@echo "building containers from $(PROJECT_NAME)"
 	@mkdir -p /home/cofische/data/mariadb
 	@mkdir -p /home/cofische/data/wordpress
+	@mkdir -p /home/cofische/data/ftp
 	@$(COMPOSE) -p $(PROJECT_NAME) up --build -d
 
 # Stop and remove the containers
