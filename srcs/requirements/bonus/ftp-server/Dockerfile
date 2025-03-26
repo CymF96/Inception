@@ -21,7 +21,7 @@ RUN openssl req \
 -out /etc/ssl/private/vsftpd.pem \
 -subj "/C=UK/ST=ENGLAND/L=LONDON/O=42/OU=INCEPTION/CN=cofische.42.fr"
 
-RUN rm -f /etc/vsftpd.conf
+RUN rm -f /etc/vsftpd/vsftpd.conf
 COPY vsftpd.conf /tmp/vsftpd.conf
 COPY ftp_start.sh /tmp/ftp_start.sh
 RUN chmod +x /tmp/ftp_start.sh
