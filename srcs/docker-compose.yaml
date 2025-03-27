@@ -10,7 +10,7 @@ services:
     volumes:
       - wordpress-volume:/var/www/wordpress
     networks:
-      - inception
+      - frontend
     depends_on:
       - wordpress
     restart: on-failure
@@ -23,7 +23,7 @@ services:
     volumes:
       - mariadb-volume:/var/lib/mysql
     networks:
-      - inception
+      - backend
     expose:
       - 3306
     restart: on-failure
@@ -35,7 +35,8 @@ services:
     volumes:
       - wordpress-volume:/var/www/wordpress  
     networks:
-      - inception
+      - frontend
+      - backend
     expose:
       - 9000
     env_file:
@@ -45,7 +46,9 @@ services:
     restart: on-failure
 
 networks:
-  inception:
+  frontend:
+    driver: bridge
+  backend:
     driver: bridge
 
 volumes:
