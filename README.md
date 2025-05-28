@@ -107,8 +107,7 @@ This project implements a complete web stack using Docker containers:
 
 5. **Access your site**
 
-   - **HTTPS:** `https://your_domain_name` 
-   if you are unable to configure your domain_name, you can use https://localhost instead
+   - **HTTPS:** `https://your_domain_name` -- if you are unable to configure your domain_name, you can use https://localhost instead
    - **WordPress Admin:** `https://your_domain_name/wp-admin`
 
 ### Quick Commands
