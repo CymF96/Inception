@@ -84,17 +84,20 @@ This project implements a complete web stack using Docker containers:
    ```
 
 3. **Update docker-compose.yaml paths to environment variable file and docker volumes**
-	> Update the path to your .env file: 
-	> 	env_file:
-	>     - .FOLDER_PATH/.filename
-
-	> Update the path to your future volumes folder:
-	>	volumes:
-  	>	  mariadb-volume:
-    >	    driver_opts:
-    >  		  type: none
-    >  		  device: /home/cofische/data/mariadb
-    >  		  o: bind
+	##### Update the path to your .env file: 
+	```yaml
+	 	env_file:
+	      - .FOLDER_PATH/.filename
+	```
+	##### Update the path to your future volumes folder:
+	```yaml
+		volumes:
+  		  mariadb-volume:
+    	    driver_opts:
+      		  type: none
+      		  device: /home/cofische/data/mariadb
+      		  o: bind
+	```
 
 4. **Build and start the infrastructure**
    ```bash
